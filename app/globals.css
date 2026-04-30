@@ -65,7 +65,6 @@
   }
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -77,7 +76,6 @@
   border-radius: 9999px;
 }
 
-/* Hero gradient overlay */
 .hero-bg {
   background: linear-gradient(135deg, #0f172a 0%, #0c4a6e 55%, #075985 100%);
   position: relative;
@@ -108,7 +106,6 @@
   background-size: 40px 40px;
 }
 
-/* Card hover lift */
 .venue-card {
   transition:
     transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
@@ -127,13 +124,11 @@
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Nav backdrop blur */
 .navbar {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
-/* Animated underline for nav links */
 .nav-link::after {
   content: "";
   display: block;
@@ -149,7 +144,6 @@
   transform: scaleX(1);
 }
 
-/* Stagger card animation */
 .cards-grid .venue-card:nth-child(1) {
   animation-delay: 0.05s;
 }
@@ -178,25 +172,21 @@
   animation-delay: 0.45s;
 }
 
-/* Search input focus ring */
 .search-input:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
 }
 
-/* Pagination active */
 .page-btn.active {
   background: #0ea5e9;
   color: #fff;
   box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
 }
 
-/* Price tag */
 .price-tag {
   color: #0284c7;
 }
 
-/* Filter sidebar */
 .filter-label {
   color: #0f172a;
   font-weight: 600;
@@ -219,7 +209,6 @@
   border-color: #0ea5e9;
 }
 
-/* Hero text animation delays */
 .hero-title {
   animation-delay: 0.1s;
 }
@@ -230,8 +219,177 @@
   animation-delay: 0s;
 }
 
-/* Decorative blobs */
 .blob {
   filter: blur(60px);
   pointer-events: none;
+}
+
+.gallery-main {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.thumb {
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+  cursor: pointer;
+}
+.thumb:hover {
+  opacity: 0.85;
+  transform: scale(1.03);
+}
+.thumb.active {
+  box-shadow: 0 0 0 2.5px #0ea5e9;
+  opacity: 1;
+}
+
+.booking-card {
+  position: sticky;
+  top: 84px;
+}
+
+.slot-cell {
+  transition:
+    background 0.18s,
+    box-shadow 0.18s,
+    transform 0.15s;
+  cursor: pointer;
+}
+.slot-cell:hover:not(.unavailable):not(.selected) {
+  background: #e0f2fe;
+  transform: scale(1.02);
+}
+.slot-cell.selected {
+  background: #0ea5e9 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
+}
+.slot-cell.unavailable {
+  cursor: not-allowed;
+}
+.slot-cell.selected .slot-price,
+.slot-cell.selected .slot-status {
+  color: #fff !important;
+}
+
+.fac-item {
+  transition: background 0.2s;
+}
+.fac-item:hover {
+  background: #f0f9ff;
+}
+
+.booking-card:hover .price-display {
+  color: #0284c7;
+}
+
+.map-placeholder {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  position: relative;
+  overflow: hidden;
+}
+.map-placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 19px,
+      rgba(14, 165, 233, 0.08) 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 19px,
+      rgba(14, 165, 233, 0.08) 20px
+    );
+}
+
+.mobile-cta {
+  display: none;
+}
+@media (max-width: 1023px) {
+  .mobile-cta {
+    display: flex;
+  }
+  .booking-card {
+    display: none;
+  }
+}
+
+.section-divider {
+  border: none;
+  border-top: 1.5px solid #e2e8f0;
+  margin: 2rem 0;
+}
+
+.stagger-1 {
+  animation-delay: 0.05s;
+}
+.stagger-2 {
+  animation-delay: 0.1s;
+}
+.stagger-3 {
+  animation-delay: 0.15s;
+}
+.stagger-4 {
+  animation-delay: 0.2s;
+}
+.stagger-5 {
+  animation-delay: 0.25s;
+}
+
+.footer-bg {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.tbl-head {
+  background: #0ea5e9;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.table-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.breadcrumb-link {
+  transition: color 0.2s;
+}
+.breadcrumb-link:hover {
+  color: #0ea5e9;
+}
+
+.wa-btn {
+  background: #25d366;
+}
+.wa-btn:hover {
+  background: #1ebe5d;
+}
+
+.custom-date-input,
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+.custom-date-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394A3B8' stroke-width='2'%3E%3Cpath d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'/%3E%3C/svg%3E");
+}
+.custom-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394A3B8' stroke-width='2'%3E%3Cpath d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.5;
 }

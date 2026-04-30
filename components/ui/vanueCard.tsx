@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Badge from './badge';
 import type { VenueItem } from '@/types/venueItem';
+import Link from 'next/link';
 
 interface VenueListProps {
   items: VenueItem[];
@@ -13,7 +14,7 @@ export default function VenueCard({ items }: VenueListProps ) {
     <div className="cards-grid grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
       {items.map((item: VenueItem) => {
         return(
-          <article key={item.id} className="venue-card bg-white rounded-2xl border border-border shadow-sm overflow-hidden cursor-pointer animate-fade-up">
+          <Link href={`/vanue/${item.id}`} key={item.id} className="venue-card bg-white rounded-2xl border border-border shadow-sm overflow-hidden cursor-pointer animate-fade-up">
             <div className="relative overflow-hidden h-44">
               <img src={item.foto[0]} alt={item.slug} className="card-img w-full h-full object-cover"/>
               <div className="absolute top-3 left-3">
@@ -40,7 +41,7 @@ export default function VenueCard({ items }: VenueListProps ) {
                 </Badge>
               </div>
             </div>
-          </article>
+          </Link>
         )
       })}
     </div>
