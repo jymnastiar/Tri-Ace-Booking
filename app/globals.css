@@ -178,17 +178,6 @@
   animation-delay: 0.45s;
 }
 
-/* Sport badge pulse on card hover */
-.venue-card:hover .sport-badge {
-  background: #0ea5e9;
-  color: #fff;
-}
-.sport-badge {
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-
 /* Search input focus ring */
 .search-input:focus {
   outline: none;

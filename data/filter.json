@@ -1,0 +1,18 @@
+{
+  "sports": [
+    "Badminton",
+    "Basket",
+    "Soccer",
+    "Tennis",
+    "Volleyball",
+    "Bowling"
+  ],
+  "cities": [
+    "Jakarta Pusat",
+    "Kota Jakarta Selatan",
+    "Kota Tangerang",
+    "Kota Bandung",
+    "Kota Surabaya",
+    "Kota Yogyakarta"
+  ]
+}

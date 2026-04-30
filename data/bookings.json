@@ -1,0 +1,748 @@
+{
+  "users": [
+    {
+      "id": "usr_001",
+      "nama_depan": "Budi",
+      "nama_belakang": "Santoso",
+      "email": "budi.santoso@gmail.com",
+      "password_hash": "$2b$10$hashedpassword1",
+      "avatar_url": null,
+      "provider": "email",
+      "created_at": "2025-11-10T08:00:00Z"
+    },
+    {
+      "id": "usr_002",
+      "nama_depan": "Sari",
+      "nama_belakang": "Dewi",
+      "email": "sari.dewi@gmail.com",
+      "password_hash": "$2b$10$hashedpassword2",
+      "avatar_url": null,
+      "provider": "google",
+      "created_at": "2025-12-01T09:30:00Z"
+    },
+    {
+      "id": "usr_003",
+      "nama_depan": "Andi",
+      "nama_belakang": "Wijaya",
+      "email": "andi.wijaya@gmail.com",
+      "password_hash": "$2b$10$hashedpassword3",
+      "avatar_url": null,
+      "provider": "apple",
+      "created_at": "2026-01-15T14:00:00Z"
+    }
+  ],
+
+  "venues": [
+    {
+      "id": "venue_001",
+      "nama": "GOR Sport Center",
+      "slug": "gor-sport-center",
+      "deskripsi": "Lapangan badminton ini cocok buat kamu yang mau main santai, latihan bareng teman, atau sekadar meringkan habis kerja. Suasananya khas GOR: ramai, seru, dan penuh energi positif dari pemain lain. Permukaan lapangan nyaman dipakai, dengan garis yang jelas dan cukup terawat. Pencahayaan juga cukup terang untuk main malam hari, jadi tetap enak dipakai tanpa gangguan penglihatan. Tempat ini cocok untuk semua level, dari yang baru belajar sampai yang sudah sering sparring. Booking juga fleksibel, bisa sewa per jam sesuai kebutuhan kamu.",
+      "alamat": "Jl. Pegadaian No.2 RT/TW",
+      "kota": "Jakarta Pusat",
+      "provinsi": "DKI Jakarta",
+      "koordinat": {
+        "lat": -6.1754,
+        "lng": 106.8272
+      },
+      "rating": 4.7,
+      "total_review": 128,
+      "harga_mulai": 50000,
+      "biaya_layanan": 5000,
+      "foto": [
+        "/images/venues/gor-sport-center-1.jpg",
+        "/images/venues/gor-sport-center-2.jpg",
+        "/images/venues/gor-sport-center-3.jpg"
+      ],
+      "jenis_olahraga": ["badminton", "volley"],
+      "fasilitas": [
+        "Lapangan badminton indoor",
+        "Lampu penerangan cukup terang",
+        "Area duduk / bangku pemain",
+        "Kamar mandi sederhana",
+        "Tempat parkir motor & mobil",
+        "Sewa raket (opsional)",
+        "Shuttlecock dijual di tempat",
+        "Kipas angin / ventilasi",
+        "Warung kecil / jajanan",
+        "Area tunggu santai"
+      ],
+      "aturan": [
+        "Gunakan sepatu olahraga (non-marking lebih disarankan).",
+        "Datang sesuai jam booking, biar nggak ganggu jadwal berikutnya.",
+        "Jaga kebersihan area, buang sampah pada tempatnya.",
+        "Tidak merokok di dalam area lapangan.",
+        "Hindari membawa makanan ke area lapangan (minuman boleh).",
+        "Jaga sikap dan hormati pemain lain di sekitar."
+      ],
+      "whatsapp_admin": "6281234567890",
+      "is_active": true,
+      "created_at": "2025-10-01T00:00:00Z"
+    },
+    {
+      "id": "venue_002",
+      "nama": "Brickhouse 1.0 Kalibata",
+      "slug": "brickhouse-kalibata",
+      "deskripsi": "Fasilitas basket indoor modern di kawasan Kalibata dengan lantai parquet berkualitas dan ring standar.",
+      "alamat": "Jl. Kalibata Utara II No.25",
+      "kota": "Kota Jakarta Selatan",
+      "provinsi": "DKI Jakarta",
+      "koordinat": {
+        "lat": -6.2603,
+        "lng": 106.8511
+      },
+      "rating": 4.7,
+      "total_review": 95,
+      "harga_mulai": 65000,
+      "biaya_layanan": 5000,
+      "foto": [
+        "/images/venues/brickhouse-1.jpg",
+        "/images/venues/brickhouse-2.jpg"
+      ],
+      "jenis_olahraga": ["Basket"],
+      "fasilitas": [
+        "Lapangan basket indoor",
+        "Lantai parquet",
+        "Ring standar",
+        "AC / pendingin ruangan",
+        "Kamar mandi",
+        "Tempat parkir"
+      ],
+      "aturan": [
+        "Gunakan sepatu non-marking.",
+        "Dilarang merokok.",
+        "Datang tepat waktu."
+      ],
+      "whatsapp_admin": "6281298765432",
+      "is_active": true,
+      "created_at": "2025-09-15T00:00:00Z"
+    },
+    {
+      "id": "venue_003",
+      "nama": "Grand Bowling",
+      "slug": "grand-bowling",
+      "deskripsi": "Pusat bowling terbesar di kawasan Tangerang dengan 24 lintasan profesional.",
+      "alamat": "Jl. Raya Serpong Kilometer 7",
+      "kota": "Kota Tangerang",
+      "provinsi": "Banten",
+      "koordinat": {
+        "lat": -6.3022,
+        "lng": 106.6527
+      },
+      "rating": 4.2,
+      "total_review": 74,
+      "harga_mulai": 60000,
+      "biaya_layanan": 5000,
+      "foto": ["/images/venues/grand-bowling-1.jpg"],
+      "jenis_olahraga": ["Bowling"],
+      "fasilitas": [
+        "24 lintasan bowling",
+        "Sepatu bowling disediakan",
+        "Kantin / food court",
+        "Parkir luas",
+        "Toilet"
+      ],
+      "aturan": [
+        "Gunakan sepatu bowling yang disediakan.",
+        "Dilarang membawa makanan dari luar.",
+        "Anak di bawah 12 tahun wajib didampingi."
+      ],
+      "whatsapp_admin": "6281311122233",
+      "is_active": true,
+      "created_at": "2025-08-20T00:00:00Z"
+    },
+    {
+      "id": "venue_004",
+      "nama": "Gor Badminton Aswaja Center",
+      "slug": "gor-badminton-aswaja-center",
+      "deskripsi": "GOR badminton dengan 8 lapangan di kawasan Bandung dengan fasilitas lengkap.",
+      "alamat": "Jl. Sumber Sari No.72",
+      "kota": "Kota Bandung",
+      "provinsi": "Jawa Barat",
+      "koordinat": {
+        "lat": -6.9147,
+        "lng": 107.6098
+      },
+      "rating": 4.6,
+      "total_review": 210,
+      "harga_mulai": 40000,
+      "biaya_layanan": 5000,
+      "foto": ["/images/venues/aswaja-1.jpg"],
+      "jenis_olahraga": ["Badminton"],
+      "fasilitas": [
+        "8 lapangan badminton",
+        "Penerangan LED",
+        "Kamar ganti",
+        "Kantin",
+        "Parkir"
+      ],
+      "aturan": [
+        "Sepatu olahraga wajib.",
+        "Dilarang merokok di dalam GOR.",
+        "Booking minimal 1 jam."
+      ],
+      "whatsapp_admin": "6281344455566",
+      "is_active": true,
+      "created_at": "2025-07-01T00:00:00Z"
+    },
+    {
+      "id": "venue_005",
+      "nama": "GRIT Sports Club Baltos",
+      "slug": "grit-sports-club-baltos",
+      "deskripsi": "Sports club lengkap di Baltos Mall lantai 3 dengan fasilitas badminton dan soccer indoor.",
+      "alamat": "Baltos Mall, Jl. Tamansari Lantai 3",
+      "kota": "Kota Bandung",
+      "provinsi": "Jawa Barat",
+      "koordinat": {
+        "lat": -6.9021,
+        "lng": 107.6186
+      },
+      "rating": 4.7,
+      "total_review": 183,
+      "harga_mulai": 45000,
+      "biaya_layanan": 5000,
+      "foto": ["/images/venues/grit-1.jpg"],
+      "jenis_olahraga": ["Badminton", "Soccer"],
+      "fasilitas": [
+        "Lapangan badminton",
+        "Lapangan soccer indoor",
+        "Loker",
+        "Shower",
+        "Kafetaria",
+        "AC"
+      ],
+      "aturan": [
+        "Sepatu non-marking wajib.",
+        "Tidak diperkenankan membawa minuman keras.",
+        "Reservasi minimal H-1."
+      ],
+      "whatsapp_admin": "6281377788899",
+      "is_active": true,
+      "created_at": "2025-06-10T00:00:00Z"
+    },
+    {
+      "id": "venue_006",
+      "nama": "Soccer Court C",
+      "slug": "soccer-court-c",
+      "deskripsi": "Lapangan soccer indoor premium di kawasan Senayan, Jakarta Pusat.",
+      "alamat": "Jl. Stadion Senayan No.1",
+      "kota": "Kota Jakarta Pusat",
+      "provinsi": "DKI Jakarta",
+      "koordinat": {
+        "lat": -6.2187,
+        "lng": 106.8017
+      },
+      "rating": 4.7,
+      "total_review": 156,
+      "harga_mulai": 70000,
+      "biaya_layanan": 5000,
+      "foto": ["/images/venues/soccer-court-c-1.jpg"],
+      "jenis_olahraga": ["Soccer"],
+      "fasilitas": [
+        "Lapangan rumput sintetis",
+        "Gawang standar",
+        "Ruang ganti",
+        "Parkir",
+        "Toilet"
+      ],
+      "aturan": [
+        "Sepatu futsal / turf wajib.",
+        "Dilarang merokok.",
+        "Batas pemain 10 orang per sesi."
+      ],
+      "whatsapp_admin": "6281300011122",
+      "is_active": true,
+      "created_at": "2025-05-20T00:00:00Z"
+    },
+    {
+      "id": "venue_007",
+      "nama": "House of Tennis Gading Serpong",
+      "slug": "house-of-tennis-gading-serpong",
+      "deskripsi": "Lapangan tenis outdoor premium dengan permukaan hard court di kawasan Gading Serpong.",
+      "alamat": "Jl. Sikki Priyang, RT.008/RW.002",
+      "kota": "Tangerang",
+      "provinsi": "Banten",
+      "koordinat": {
+        "lat": -6.2441,
+        "lng": 106.6202
+      },
+      "rating": 4.8,
+      "total_review": 99,
+      "harga_mulai": 60000,
+      "biaya_layanan": 5000,
+      "foto": ["/images/venues/hot-tennis-1.jpg"],
+      "jenis_olahraga": ["Tennis"],
+      "fasilitas": [
+        "Lapangan hard court",
+        "Tribun penonton",
+        "Sewa raket",
+        "Parkir luas",
+        "Toilet"
+      ],
+      "aturan": [
+        "Gunakan sepatu tenis.",
+        "Dilarang menginjak lapangan dengan alas kaki biasa.",
+        "Booking minimal 1 jam."
+      ],
+      "whatsapp_admin": "6281322233344",
+      "is_active": true,
+      "created_at": "2025-04-01T00:00:00Z"
+    },
+    {
+      "id": "venue_008",
+      "nama": "Tarantula Soccer Field",
+      "slug": "tarantula-soccer-field",
+      "deskripsi": "Lapangan sepak bola dengan rumput sintetis di Bandung, cocok untuk turnamen kecil.",
+      "alamat": "Jl. Salak No.2",
+      "kota": "Kota Bandung",
+      "provinsi": "Jawa Barat",
+      "koordinat": {
+        "lat": -6.9278,
+        "lng": 107.6011
+      },
+      "rating": 4.7,
+      "total_review": 67,
+      "harga_mulai": 55000,
+      "biaya_layanan": 5000,
+      "foto": ["/images/venues/tarantula-1.jpg"],
+      "jenis_olahraga": ["Soccer"],
+      "fasilitas": ["Rumput sintetis", "Lampu malam", "Toilet", "Parkir motor"],
+      "aturan": [
+        "Sepatu futsal wajib.",
+        "Dilarang membawa hewan peliharaan.",
+        "Bayar di muka."
+      ],
+      "whatsapp_admin": "6281355566677",
+      "is_active": true,
+      "created_at": "2025-03-15T00:00:00Z"
+    },
+    {
+      "id": "venue_009",
+      "nama": "Siliwangi Basketball Court",
+      "slug": "siliwangi-basketball-court",
+      "deskripsi": "Lapangan basket dan voli di kawasan Bandung dengan suasana outdoor yang asri.",
+      "alamat": "Jl. Menado No.33",
+      "kota": "Kota Bandung",
+      "provinsi": "Jawa Barat",
+      "koordinat": {
+        "lat": -6.8965,
+        "lng": 107.6068
+      },
+      "rating": 4.7,
+      "total_review": 88,
+      "harga_mulai": 35000,
+      "biaya_layanan": 5000,
+      "foto": ["/images/venues/siliwangi-1.jpg"],
+      "jenis_olahraga": ["Tennis", "VollyBall"],
+      "fasilitas": [
+        "Lapangan basket outdoor",
+        "Lapangan voli",
+        "Tribun",
+        "Toilet",
+        "Parkir"
+      ],
+      "aturan": [
+        "Sepatu olahraga wajib.",
+        "Jaga kebersihan lapangan.",
+        "Tidak boleh parkir sembarangan."
+      ],
+      "whatsapp_admin": "6281388899900",
+      "is_active": true,
+      "created_at": "2025-02-01T00:00:00Z"
+    }
+  ],
+
+  "lapangan": [
+    {
+      "id": "lap_001",
+      "venue_id": "venue_001",
+      "nama": "Lapangan 1",
+      "jenis_olahraga": "Badminton",
+      "harga_per_sesi": 50000,
+      "is_active": true
+    },
+    {
+      "id": "lap_002",
+      "venue_id": "venue_001",
+      "nama": "Lapangan 2",
+      "jenis_olahraga": "Badminton",
+      "harga_per_sesi": 50000,
+      "is_active": true
+    },
+    {
+      "id": "lap_003",
+      "venue_id": "venue_001",
+      "nama": "Lapangan A",
+      "jenis_olahraga": "Badminton",
+      "harga_per_sesi": 50000,
+      "is_active": true
+    },
+    {
+      "id": "lap_004",
+      "venue_id": "venue_001",
+      "nama": "Lapangan B",
+      "jenis_olahraga": "Badminton",
+      "harga_per_sesi": 50000,
+      "is_active": true
+    },
+    {
+      "id": "lap_005",
+      "venue_id": "venue_001",
+      "nama": "Lapangan C",
+      "jenis_olahraga": "Bola Voly",
+      "harga_per_sesi": 50000,
+      "is_active": true
+    },
+    {
+      "id": "lap_006",
+      "venue_id": "venue_002",
+      "nama": "Lapangan Utama",
+      "jenis_olahraga": "Basket",
+      "harga_per_sesi": 65000,
+      "is_active": true
+    },
+    {
+      "id": "lap_007",
+      "venue_id": "venue_004",
+      "nama": "Lapangan 1",
+      "jenis_olahraga": "Badminton",
+      "harga_per_sesi": 40000,
+      "is_active": true
+    },
+    {
+      "id": "lap_008",
+      "venue_id": "venue_004",
+      "nama": "Lapangan 2",
+      "jenis_olahraga": "Badminton",
+      "harga_per_sesi": 40000,
+      "is_active": true
+    }
+  ],
+
+  "ketersediaan": [
+    {
+      "id": "avl_001",
+      "lapangan_id": "lap_001",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "08:00",
+      "jam_selesai": "09:00",
+      "status": "tidak_tersedia"
+    },
+    {
+      "id": "avl_002",
+      "lapangan_id": "lap_001",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "09:00",
+      "jam_selesai": "10:00",
+      "status": "dipilih"
+    },
+    {
+      "id": "avl_003",
+      "lapangan_id": "lap_001",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "10:00",
+      "jam_selesai": "11:00",
+      "status": "tersedia"
+    },
+    {
+      "id": "avl_004",
+      "lapangan_id": "lap_001",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "11:00",
+      "jam_selesai": "12:00",
+      "status": "tersedia"
+    },
+    {
+      "id": "avl_005",
+      "lapangan_id": "lap_001",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "12:00",
+      "jam_selesai": "13:00",
+      "status": "tersedia"
+    },
+    {
+      "id": "avl_006",
+      "lapangan_id": "lap_001",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "13:00",
+      "jam_selesai": "14:00",
+      "status": "tersedia"
+    },
+    {
+      "id": "avl_007",
+      "lapangan_id": "lap_001",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "14:00",
+      "jam_selesai": "15:00",
+      "status": "tidak_tersedia"
+    },
+    {
+      "id": "avl_008",
+      "lapangan_id": "lap_002",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "08:00",
+      "jam_selesai": "09:00",
+      "status": "tersedia"
+    },
+    {
+      "id": "avl_009",
+      "lapangan_id": "lap_002",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "09:00",
+      "jam_selesai": "10:00",
+      "status": "tersedia"
+    },
+    {
+      "id": "avl_010",
+      "lapangan_id": "lap_002",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "10:00",
+      "jam_selesai": "11:00",
+      "status": "tersedia"
+    },
+    {
+      "id": "avl_011",
+      "lapangan_id": "lap_002",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "12:00",
+      "jam_selesai": "13:00",
+      "status": "tidak_tersedia"
+    }
+  ],
+
+  "bookings": [
+    {
+      "id": "bkg_001",
+      "kode_booking": "24184918294",
+      "user_id": "usr_001",
+      "venue_id": "venue_001",
+      "lapangan_id": "lap_001",
+      "jenis_olahraga": "Badminton",
+      "tanggal": "2026-05-16",
+      "jam_mulai": "19:00",
+      "jam_selesai": "20:00",
+      "sewa_lapangan": 50000,
+      "biaya_layanan": 5000,
+      "total_bayar": 55000,
+      "status": "terkonfirmasi",
+      "metode_pembayaran": "Bank BCA",
+      "virtual_account": "12300987654378976 5",
+      "batas_bayar": "2026-05-16T01:00:00Z",
+      "qr_code_url": "/qrcodes/bkg_001.png",
+      "created_at": "2026-05-15T18:00:00Z",
+      "updated_at": "2026-05-15T18:10:00Z"
+    },
+    {
+      "id": "bkg_002",
+      "kode_booking": "24184918295",
+      "user_id": "usr_001",
+      "venue_id": "venue_001",
+      "lapangan_id": "lap_002",
+      "jenis_olahraga": "Badminton",
+      "tanggal": "2024-12-25",
+      "jam_mulai": "15:00",
+      "jam_selesai": "16:00",
+      "sewa_lapangan": 50000,
+      "biaya_layanan": 5000,
+      "total_bayar": 50000,
+      "status": "pembayaran",
+      "metode_pembayaran": null,
+      "virtual_account": null,
+      "batas_bayar": "2024-12-25T21:00:00Z",
+      "qr_code_url": null,
+      "created_at": "2024-12-24T10:00:00Z",
+      "updated_at": "2024-12-24T10:00:00Z"
+    },
+    {
+      "id": "bkg_003",
+      "kode_booking": "24184918296",
+      "user_id": "usr_001",
+      "venue_id": "venue_001",
+      "lapangan_id": "lap_003",
+      "jenis_olahraga": "Badminton",
+      "tanggal": "2024-12-25",
+      "jam_mulai": "15:00",
+      "jam_selesai": "16:00",
+      "sewa_lapangan": 50000,
+      "biaya_layanan": 5000,
+      "total_bayar": 50000,
+      "status": "terkonfirmasi",
+      "metode_pembayaran": "DANA",
+      "virtual_account": null,
+      "batas_bayar": null,
+      "qr_code_url": "/qrcodes/bkg_003.png",
+      "created_at": "2024-12-23T08:00:00Z",
+      "updated_at": "2024-12-23T08:30:00Z"
+    },
+    {
+      "id": "bkg_004",
+      "kode_booking": "24184918297",
+      "user_id": "usr_001",
+      "venue_id": "venue_001",
+      "lapangan_id": "lap_004",
+      "jenis_olahraga": "Badminton",
+      "tanggal": "2024-12-25",
+      "jam_mulai": "15:00",
+      "jam_selesai": "16:00",
+      "sewa_lapangan": 50000,
+      "biaya_layanan": 5000,
+      "total_bayar": 50000,
+      "status": "dibatalkan",
+      "metode_pembayaran": null,
+      "virtual_account": null,
+      "batas_bayar": null,
+      "qr_code_url": null,
+      "created_at": "2024-12-20T11:00:00Z",
+      "updated_at": "2024-12-21T09:00:00Z"
+    },
+    {
+      "id": "bkg_005",
+      "kode_booking": "24184918298",
+      "user_id": "usr_001",
+      "venue_id": "venue_001",
+      "lapangan_id": "lap_001",
+      "jenis_olahraga": "Badminton",
+      "tanggal": "2024-12-25",
+      "jam_mulai": "15:00",
+      "jam_selesai": "16:00",
+      "sewa_lapangan": 50000,
+      "biaya_layanan": 5000,
+      "total_bayar": 50000,
+      "status": "selesai",
+      "metode_pembayaran": "GoPay",
+      "virtual_account": null,
+      "batas_bayar": null,
+      "qr_code_url": "/qrcodes/bkg_005.png",
+      "created_at": "2024-12-10T07:00:00Z",
+      "updated_at": "2024-12-10T16:00:00Z"
+    },
+    {
+      "id": "bkg_006",
+      "kode_booking": "24184918299",
+      "user_id": "usr_002",
+      "venue_id": "venue_002",
+      "lapangan_id": "lap_006",
+      "jenis_olahraga": "Basket",
+      "tanggal": "2026-05-20",
+      "jam_mulai": "10:00",
+      "jam_selesai": "11:00",
+      "sewa_lapangan": 65000,
+      "biaya_layanan": 5000,
+      "total_bayar": 70000,
+      "status": "pembayaran",
+      "metode_pembayaran": null,
+      "virtual_account": null,
+      "batas_bayar": "2026-05-20T16:00:00Z",
+      "qr_code_url": null,
+      "created_at": "2026-05-19T14:00:00Z",
+      "updated_at": "2026-05-19T14:00:00Z"
+    }
+  ],
+
+  "pembayaran": [
+    {
+      "id": "pay_001",
+      "booking_id": "bkg_001",
+      "user_id": "usr_001",
+      "metode": "Bank BCA",
+      "tipe": "transfer",
+      "virtual_account": "12300987654378976 5",
+      "jumlah": 55000,
+      "status": "berhasil",
+      "batas_waktu": "2026-05-16T01:00:00Z",
+      "dibayar_pada": "2026-05-15T19:00:00Z",
+      "created_at": "2026-05-15T18:00:00Z"
+    },
+    {
+      "id": "pay_002",
+      "booking_id": "bkg_003",
+      "user_id": "usr_001",
+      "metode": "DANA",
+      "tipe": "ewallet",
+      "virtual_account": null,
+      "jumlah": 55000,
+      "status": "berhasil",
+      "batas_waktu": "2024-12-23T14:00:00Z",
+      "dibayar_pada": "2024-12-23T08:25:00Z",
+      "created_at": "2024-12-23T08:00:00Z"
+    },
+    {
+      "id": "pay_003",
+      "booking_id": "bkg_005",
+      "user_id": "usr_001",
+      "metode": "GoPay",
+      "tipe": "ewallet",
+      "virtual_account": null,
+      "jumlah": 55000,
+      "status": "berhasil",
+      "batas_waktu": "2024-12-10T13:00:00Z",
+      "dibayar_pada": "2024-12-10T07:30:00Z",
+      "created_at": "2024-12-10T07:00:00Z"
+    },
+    {
+      "id": "pay_004",
+      "booking_id": "bkg_002",
+      "user_id": "usr_001",
+      "metode": null,
+      "tipe": null,
+      "virtual_account": null,
+      "jumlah": 55000,
+      "status": "menunggu",
+      "batas_waktu": "2024-12-25T21:00:00Z",
+      "dibayar_pada": null,
+      "created_at": "2024-12-24T10:00:00Z"
+    }
+  ],
+
+  "metode_pembayaran": [
+    {
+      "id": "mp_001",
+      "nama": "Bank BCA",
+      "tipe": "transfer",
+      "logo_url": "/icons/bca.png",
+      "is_active": true
+    },
+    {
+      "id": "mp_002",
+      "nama": "Bank BRI",
+      "tipe": "transfer",
+      "logo_url": "/icons/bri.png",
+      "is_active": true
+    },
+    {
+      "id": "mp_003",
+      "nama": "Bank BNI",
+      "tipe": "transfer",
+      "logo_url": "/icons/bni.png",
+      "is_active": true
+    },
+    {
+      "id": "mp_004",
+      "nama": "DANA",
+      "tipe": "ewallet",
+      "logo_url": "/icons/dana.png",
+      "is_active": true
+    },
+    {
+      "id": "mp_005",
+      "nama": "OVO",
+      "tipe": "ewallet",
+      "logo_url": "/icons/ovo.png",
+      "is_active": true
+    },
+    {
+      "id": "mp_006",
+      "nama": "GoPay",
+      "tipe": "ewallet",
+      "logo_url": "/icons/gopay.png",
+      "is_active": true
+    },
+    {
+      "id": "mp_007",
+      "nama": "QRIS",
+      "tipe": "qris",
+      "logo_url": "/icons/qris.png",
+      "is_active": true
+    }
+  ]
+}

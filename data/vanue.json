@@ -1,0 +1,470 @@
+[
+  {
+    "id": "venue_001",
+    "nama": "GOR Sport Center",
+    "slug": "gor-sport-center",
+    "deskripsi": "Lapangan badminton ini cocok buat kamu yang mau main santai, latihan bareng teman, atau sekadar meringkan habis kerja. Suasananya khas GOR: ramai, seru, dan penuh energi positif dari pemain lain. Permukaan lapangan nyaman dipakai, dengan garis yang jelas dan cukup terawat. Pencahayaan juga cukup terang untuk main malam hari, jadi tetap enak dipakai tanpa gangguan penglihatan. Tempat ini cocok untuk semua level, dari yang baru belajar sampai yang sudah sering sparring. Booking juga fleksibel, bisa sewa per jam sesuai kebutuhan kamu.",
+    "alamat": "Jl. Pegadaian No.2 RT/TW",
+    "kota": "Jakarta Pusat",
+    "provinsi": "DKI Jakarta",
+    "koordinat": {
+      "lat": -6.1754,
+      "lng": 106.8272
+    },
+    "rating": 4.7,
+    "total_review": 128,
+    "harga_mulai": 50000,
+    "biaya_layanan": 5000,
+    "status": "terbatas",
+    "foto": [
+      "/images/venues/gor-sport-center-1.jpg",
+      "/images/venues/gor-sport-center-2.jpg",
+      "/images/venues/gor-sport-center-3.jpg"
+    ],
+    "jenis_olahraga": ["badminton", "volley"],
+    "fasilitas": [
+      "Lapangan badminton indoor",
+      "Lampu penerangan cukup terang",
+      "Area duduk / bangku pemain",
+      "Kamar mandi sederhana",
+      "Tempat parkir motor & mobil",
+      "Sewa raket (opsional)",
+      "Shuttlecock dijual di tempat",
+      "Kipas angin / ventilasi",
+      "Warung kecil / jajanan",
+      "Area tunggu santai"
+    ],
+    "aturan": [
+      "Gunakan sepatu olahraga (non-marking lebih disarankan).",
+      "Datang sesuai jam booking, biar nggak ganggu jadwal berikutnya.",
+      "Jaga kebersihan area, buang sampah pada tempatnya.",
+      "Tidak merokok di dalam area lapangan.",
+      "Hindari membawa makanan ke area lapangan (minuman boleh).",
+      "Jaga sikap dan hormati pemain lain di sekitar."
+    ],
+    "whatsapp_admin": "6281234567890",
+    "is_active": true,
+    "created_at": "2025-10-01T00:00:00Z"
+  },
+  {
+    "id": "venue_002",
+    "nama": "Brickhouse 1.0 Kalibata",
+    "slug": "brickhouse-1-0-kalibata",
+    "deskripsi": "Lapangan basket indoor favorit di Jakarta Selatan. Lantai kayu berkualitas, ring profesional, dan pencahayaan standar pertandingan. Tersedia juga lapangan half-court untuk latihan santai. Suasana modern dan bersih, cocok untuk sparing atau turnamen kecil.",
+    "alamat": "Jl. Kalibata Utara II No.25",
+    "kota": "Jakarta Selatan",
+    "provinsi": "DKI Jakarta",
+    "koordinat": {
+      "lat": -6.2573,
+      "lng": 106.841
+    },
+    "rating": 4.7,
+    "total_review": 95,
+    "harga_mulai": 65000,
+    "status": "tersedia",
+    "foto": [
+      "/images/venues/brickhouse-1.jpg",
+      "/images/venues/brickhouse-2.jpg",
+      "/images/venues/brickhouse-3.jpg"
+    ],
+    "jenis_olahraga": ["basket"],
+    "fasilitas": [
+      "Lapangan basket indoor (full court & half court)",
+      "Lantai kayu maple",
+      "Papan skor digital",
+      "Ruang ganti & shower",
+      "Bangku penonton",
+      "Kantin & vending machine",
+      "Tempat parkir mobil & motor",
+      "Wi-Fi gratis"
+    ],
+    "aturan": [
+      "Wajib menggunakan sepatu basket non-marking.",
+      "Tidak merokok di dalam area venue.",
+      "Jaga kebersihan dan buang sampah pada tempatnya.",
+      "Booking minimal 1 jam, maksimal 3 jam per sesi.",
+      "Dilarang membawa makanan dan minuman beralkohol.",
+      "Patuhi keputusan wasit/pengelola saat terjadi sengketa."
+    ],
+    "whatsapp_admin": "6281234567891",
+    "is_active": true,
+    "created_at": "2025-11-01T00:00:00Z"
+  },
+  {
+    "id": "venue_003",
+    "nama": "Siliwangi Basketball Court",
+    "slug": "siliwangi-basketball-court",
+    "deskripsi": "Lapangan basket outdoor dengan permukaan beton halus, cocok untuk streetball dan latihan rutin. Terletak di pusat kota Bandung, mudah diakses dan populer di kalangan komunitas basket lokal.",
+    "alamat": "Jl. Menado No.33",
+    "kota": "Bandung",
+    "provinsi": "Jawa Barat",
+    "koordinat": {
+      "lat": -6.9147,
+      "lng": 107.6098
+    },
+    "rating": 4.5,
+    "total_review": 62,
+    "harga_mulai": 35000,
+    "status": "tersedia",
+    "foto": [
+      "/images/venues/siliwangi-basket-1.jpg",
+      "/images/venues/siliwangi-basket-2.jpg"
+    ],
+    "jenis_olahraga": ["basket"],
+    "fasilitas": [
+      "Lapangan outdoor full court",
+      "Penerangan malam",
+      "Bangku pinggir lapangan",
+      "Warung minuman",
+      "Toilet umum",
+      "Parkir motor terbatas"
+    ],
+    "aturan": [
+      "Gunakan sepatu olahraga.",
+      "Tidak merokok di area lapangan.",
+      "Jaga ketertiban dan kebersihan.",
+      "Sewa minimal 1 jam.",
+      "Dilarang bermain saat hujan (lapangan licin)."
+    ],
+    "whatsapp_admin": "6281234567892",
+    "is_active": true,
+    "created_at": "2025-11-15T00:00:00Z"
+  },
+  {
+    "id": "venue_004",
+    "nama": "GRIT Sports Club Baltos",
+    "slug": "grit-sports-club-baltos",
+    "deskripsi": "Arena sepakbola mini di dalam mall Baltos Bandung. Lapangan sintetis dengan AC, nyaman untuk futsal atau sepakbola 5v5. Tersedia ruang ganti dan area santai. Cocok untuk acara kantor, gathering, atau sewa reguler.",
+    "alamat": "Baltos Mall, Tamansari Lantai 3",
+    "kota": "Bandung",
+    "provinsi": "Jawa Barat",
+    "koordinat": {
+      "lat": -6.9153,
+      "lng": 107.6081
+    },
+    "rating": 4.6,
+    "total_review": 78,
+    "harga_mulai": 45000,
+    "status": "terbatas",
+    "foto": [
+      "/images/venues/grit-baltos-1.jpg",
+      "/images/venues/grit-baltos-2.jpg",
+      "/images/venues/grit-baltos-3.jpg"
+    ],
+    "jenis_olahraga": ["football"],
+    "fasilitas": [
+      "Lapangan sintetis indoor",
+      "AC & ventilasi",
+      "Ruang ganti & loker",
+      "Papan skor",
+      "Kafe & lounge",
+      "Toilet bersih",
+      "Parkir mall"
+    ],
+    "aturan": [
+      "Sepatu futsal/flat wajib.",
+      "Tidak merokok di seluruh area.",
+      "Makanan ringan diperbolehkan di luar lapangan.",
+      "Booking minimal 2 jam.",
+      "Jaga sikap sportif."
+    ],
+    "whatsapp_admin": "6281234567893",
+    "is_active": true,
+    "created_at": "2025-12-01T00:00:00Z"
+  },
+  {
+    "id": "venue_005",
+    "nama": "Soccer Court Senayan",
+    "slug": "soccer-court-senayan",
+    "deskripsi": "Lapangan sepakbola mini outdoor di area Gelora Bung Karno. Permukaan rumput sintetis berkualitas, view stadion ikonik. Cocok untuk sparing, turnamen, atau fun football.",
+    "alamat": "Jl. Stadion Senayan No.1.3, Gelora",
+    "kota": "Jakarta Pusat",
+    "provinsi": "DKI Jakarta",
+    "koordinat": {
+      "lat": -6.2188,
+      "lng": 106.8025
+    },
+    "rating": 4.7,
+    "total_review": 112,
+    "harga_mulai": 70000,
+    "status": "penuh",
+    "foto": [
+      "/images/venues/senayan-soccer-1.jpg",
+      "/images/venues/senayan-soccer-2.jpg",
+      "/images/venues/senayan-soccer-3.jpg"
+    ],
+    "jenis_olahraga": ["football"],
+    "fasilitas": [
+      "Rumput sintetis FIFA",
+      "Lampu stadion",
+      "Bangku pemain & tim",
+      "Papan skor manual",
+      "Toilet & shower",
+      "Kantin area",
+      "Parkir luas"
+    ],
+    "aturan": [
+      "Hanya sepatu plastik moulded yang diizinkan (tanpa stud logam).",
+      "Tidak merokok di lapangan.",
+      "Booking minimal 1 jam.",
+      "Dilarang membawa minuman keras.",
+      "Jaga kebersihan, buang sampah pada tempatnya."
+    ],
+    "whatsapp_admin": "6281234567894",
+    "is_active": true,
+    "created_at": "2025-10-20T00:00:00Z"
+  },
+  {
+    "id": "venue_006",
+    "nama": "Tarantula Soccer Field",
+    "slug": "tarantula-soccer-field",
+    "deskripsi": "Lapangan sepakbola outdoor yang legendaris di Bandung, dengan rumput sintetis terawat dan penerangan malam. Banyak digunakan untuk turnamen lokal dan latihan.",
+    "alamat": "Jl. Salak No.2",
+    "kota": "Bandung",
+    "provinsi": "Jawa Barat",
+    "koordinat": {
+      "lat": -6.9341,
+      "lng": 107.6046
+    },
+    "rating": 4.6,
+    "total_review": 85,
+    "harga_mulai": 55000,
+    "status": "tersedia",
+    "foto": [
+      "/images/venues/tarantula-soccer-1.jpg",
+      "/images/venues/tarantula-soccer-2.jpg"
+    ],
+    "jenis_olahraga": ["football"],
+    "fasilitas": [
+      "Lapangan rumput sintetis",
+      "Cahaya malam",
+      "Tribun kecil",
+      "Kamar mandi",
+      "Warung jajanan",
+      "Parkir motor"
+    ],
+    "aturan": [
+      "Wajib sepatu bola atau futsal.",
+      "Tidak merokok.",
+      "Buang sampah pada tempatnya.",
+      "Booking minimal 2 jam.",
+      "Jaga ketertiban selama bermain."
+    ],
+    "whatsapp_admin": "6281234567895",
+    "is_active": true,
+    "created_at": "2025-12-15T00:00:00Z"
+  },
+  {
+    "id": "venue_007",
+    "nama": "House of Tennis Gading Serpong",
+    "slug": "house-of-tennis-gading-serpong",
+    "deskripsi": "Pusat tenis eksklusif dengan 3 lapangan hard court dan 1 lapangan clay. Fasilitas lengkap, pelatih tersedia, dan suasana tenang di kawasan Gading Serpong. Cocok untuk belajar, sparing, atau acara turnamen kecil.",
+    "alamat": "Jl. Skki Priyang, RT.008/RW.002",
+    "kota": "Tangerang",
+    "provinsi": "Banten",
+    "koordinat": {
+      "lat": -6.2345,
+      "lng": 106.6253
+    },
+    "rating": 4.8,
+    "total_review": 45,
+    "harga_mulai": 60000,
+    "status": "tersedia",
+    "foto": [
+      "/images/venues/house-of-tennis-1.jpg",
+      "/images/venues/house-of-tennis-2.jpg",
+      "/images/venues/house-of-tennis-3.jpg"
+    ],
+    "jenis_olahraga": ["tennis"],
+    "fasilitas": [
+      "3 lapangan hard court (acrylic)",
+      "1 lapangan clay",
+      "Penerangan standar turnamen",
+      "Ruang ganti & shower",
+      "Pro shop (sewa raket, senar, pakaian)",
+      "Kantin & lounge",
+      "Tempat parkir mobil",
+      "Wi-Fi"
+    ],
+    "aturan": [
+      "Mengenakan sepatu tenis khusus (non-marking).",
+      "Dilarang merokok di area venue.",
+      "Booking minimal 1 jam.",
+      "Jangan memasuki lapangan saat sesi orang lain berlangsung.",
+      "Jaga kebersihan dan ketenangan."
+    ],
+    "whatsapp_admin": "6281234567896",
+    "is_active": true,
+    "created_at": "2026-01-10T00:00:00Z"
+  },
+  {
+    "id": "venue_008",
+    "nama": "Bandung Volley Center",
+    "slug": "bandung-volley-center",
+    "deskripsi": "Gedung bola voli indoor dengan 2 lapangan standar nasional. Tersedia fasilitas untuk pelatihan, turnamen, dan komunitas voli. Suasana sejuk dan fasilitas bersih di pusat kota Bandung.",
+    "alamat": "Jl. Dipatiukur No.79",
+    "kota": "Bandung",
+    "provinsi": "Jawa Barat",
+    "koordinat": {
+      "lat": -6.8978,
+      "lng": 107.6173
+    },
+    "rating": 4.5,
+    "total_review": 54,
+    "harga_mulai": 45000,
+    "status": "tersedia",
+    "foto": [
+      "/images/venues/bandung-volley-1.jpg",
+      "/images/venues/bandung-volley-2.jpg"
+    ],
+    "jenis_olahraga": ["volley"],
+    "fasilitas": [
+      "2 lapangan indoor",
+      "Net profesional",
+      "Penerangan terang",
+      "Bangku penonton",
+      "Ruang ganti sederhana",
+      "Kantin kecil",
+      "Parkir motor"
+    ],
+    "aturan": [
+      "Sepatu olahraga bersol karet wajib.",
+      "Tidak merokok di dalam gedung.",
+      "Jadwal harus dipesan minimal 1 hari sebelumnya.",
+      "Hormati pemain lain dan wasit.",
+      "Dilarang keras membawa makanan ke lapangan (minuman boleh)."
+    ],
+    "whatsapp_admin": "6281234567897",
+    "is_active": true,
+    "created_at": "2026-02-05T00:00:00Z"
+  },
+  {
+    "id": "venue_009",
+    "nama": "Grand Bowling Serpong",
+    "slug": "grand-bowling-serpong",
+    "deskripsi": "Arena bowling modern dengan 16 lane di pusat hiburan Serpong. Suasana family-friendly, dilengkapi sistem scoring otomatis, lounge, dan pilihan makanan ringan. Cocok untuk acara ulang tahun, gathering kantor, atau rekreasi akhir pekan.",
+    "alamat": "Jl. Raya Serpong KM 7, BSD",
+    "kota": "Tangerang Selatan",
+    "provinsi": "Banten",
+    "koordinat": {
+      "lat": -6.2838,
+      "lng": 106.6621
+    },
+    "rating": 4.2,
+    "total_review": 128,
+    "harga_mulai": 60000,
+    "status": "penuh",
+    "foto": [
+      "/images/venues/grand-bowling-1.jpg",
+      "/images/venues/grand-bowling-2.jpg",
+      "/images/venues/grand-bowling-3.jpg"
+    ],
+    "jenis_olahraga": ["bowling"],
+    "fasilitas": [
+      "16 lane dengan scoring otomatis",
+      "Sepatu bowling gratis",
+      "Lounge & meja",
+      "Snack bar",
+      "Musik latar",
+      "Toilet mewah",
+      "Parkir basement",
+      "AC full"
+    ],
+    "aturan": [
+      "Gunakan sepatu bowling yang disediakan.",
+      "Tidak makan/minum di area lane.",
+      "Anak di bawah 10 tahun wajib didampingi orang dewasa.",
+      "Jangan melempar bola sebelum pin siap.",
+      "Lane harus dikosongkan tepat waktu sesuai sesi."
+    ],
+    "whatsapp_admin": "6281234567898",
+    "is_active": true,
+    "created_at": "2026-03-01T00:00:00Z"
+  },
+  {
+    "id": "venue_010",
+    "nama": "Grand Bowling Serpong",
+    "slug": "grand-bowling-serpong",
+    "deskripsi": "Arena bowling modern dengan 16 lane di pusat hiburan Serpong. Suasana family-friendly, dilengkapi sistem scoring otomatis, lounge, dan pilihan makanan ringan. Cocok untuk acara ulang tahun, gathering kantor, atau rekreasi akhir pekan.",
+    "alamat": "Jl. Raya Serpong KM 7, BSD",
+    "kota": "Tangerang Selatan",
+    "provinsi": "Banten",
+    "koordinat": {
+      "lat": -6.2838,
+      "lng": 106.6621
+    },
+    "rating": 4.2,
+    "total_review": 128,
+    "harga_mulai": 60000,
+    "status": "penuh",
+    "foto": [
+      "/images/venues/grand-bowling-1.jpg",
+      "/images/venues/grand-bowling-2.jpg",
+      "/images/venues/grand-bowling-3.jpg"
+    ],
+    "jenis_olahraga": ["bowling"],
+    "fasilitas": [
+      "16 lane dengan scoring otomatis",
+      "Sepatu bowling gratis",
+      "Lounge & meja",
+      "Snack bar",
+      "Musik latar",
+      "Toilet mewah",
+      "Parkir basement",
+      "AC full"
+    ],
+    "aturan": [
+      "Gunakan sepatu bowling yang disediakan.",
+      "Tidak makan/minum di area lane.",
+      "Anak di bawah 10 tahun wajib didampingi orang dewasa.",
+      "Jangan melempar bola sebelum pin siap.",
+      "Lane harus dikosongkan tepat waktu sesuai sesi."
+    ],
+    "whatsapp_admin": "6281234567898",
+    "is_active": true,
+    "created_at": "2026-03-01T00:00:00Z"
+  },
+  {
+    "id": "venue_011",
+    "nama": "Grand Bowling Serpong",
+    "slug": "grand-bowling-serpong",
+    "deskripsi": "Arena bowling modern dengan 16 lane di pusat hiburan Serpong. Suasana family-friendly, dilengkapi sistem scoring otomatis, lounge, dan pilihan makanan ringan. Cocok untuk acara ulang tahun, gathering kantor, atau rekreasi akhir pekan.",
+    "alamat": "Jl. Raya Serpong KM 7, BSD",
+    "kota": "Tangerang Selatan",
+    "provinsi": "Banten",
+    "koordinat": {
+      "lat": -6.2838,
+      "lng": 106.6621
+    },
+    "rating": 4.2,
+    "total_review": 128,
+    "harga_mulai": 60000,
+    "status": "penuh",
+    "foto": [
+      "/images/venues/grand-bowling-1.jpg",
+      "/images/venues/grand-bowling-2.jpg",
+      "/images/venues/grand-bowling-3.jpg"
+    ],
+    "jenis_olahraga": ["bowling"],
+    "fasilitas": [
+      "16 lane dengan scoring otomatis",
+      "Sepatu bowling gratis",
+      "Lounge & meja",
+      "Snack bar",
+      "Musik latar",
+      "Toilet mewah",
+      "Parkir basement",
+      "AC full"
+    ],
+    "aturan": [
+      "Gunakan sepatu bowling yang disediakan.",
+      "Tidak makan/minum di area lane.",
+      "Anak di bawah 10 tahun wajib didampingi orang dewasa.",
+      "Jangan melempar bola sebelum pin siap.",
+      "Lane harus dikosongkan tepat waktu sesuai sesi."
+    ],
+    "whatsapp_admin": "6281234567898",
+    "is_active": true,
+    "created_at": "2026-03-01T00:00:00Z"
+  }
+]

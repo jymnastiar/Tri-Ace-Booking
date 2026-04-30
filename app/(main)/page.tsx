@@ -4,8 +4,8 @@ import MainHero from "@/components/layouts/main/hero";
 export default function Home() {
   return (
     <>
-      {/* <MainHero />
-      <MainContent /> */}
+      <MainHero />
+      <MainContent />
     </>
   );
 }
