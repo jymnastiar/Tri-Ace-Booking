@@ -2,15 +2,22 @@
 
 import type { Olahraga, JamOperasional } from "@/types/availability";
 import { useAvailability } from "@/hooks/useAvailability";
+import Image from "next/image";
 
 export default function AvailabilityTable({
   olahraga,
   jamOperasional,
   initialBookedSlots = [],
+  venueId,
+  tanggal,
+  onCheckout,
 }: {
   olahraga: Olahraga[];
   jamOperasional: JamOperasional;
   initialBookedSlots?: [number, number][];
+  venueId: string;
+  tanggal: string;
+  onCheckout: (selectedSlots: [number, number][], olahragaSlug: string) => void;
 }) {
   const {
     selectedIdx,
@@ -21,7 +28,7 @@ export default function AvailabilityTable({
     isSelectedTemp,
     toggleSlot,
     handleCheckout
-  } = useAvailability({ olahraga, jamOperasional, initialBookedSlots });
+  } = useAvailability({ olahraga, jamOperasional, initialBookedSlots, onCheckout });
 
   return (
     <div className="animate-fade-up stagger-5" id="ketersediaan">
@@ -102,27 +109,12 @@ export default function AvailabilityTable({
         </table>
       </div>
 
-      <div className="flex flex-wrap gap-4 mt-3">
-        <div className="flex items-center gap-1.5 text-xs text-body">
-          <div className="w-3 h-3 rounded bg-white border border-border" /> Tersedia
-        </div>
-        <div className="flex items-center gap-1.5 text-xs text-body">
-          <div className="w-3 h-3 rounded bg-[#0EA5E9]" /> Dipilih
-        </div>
-        <div className="flex items-center gap-1.5 text-xs text-body">
-          <div className="w-3 h-3 rounded bg-surface border border-border" /> Dibooking/Tidak Tersedia
-        </div>
-      </div>
-
       <div className="mt-6">
         <button
           onClick={handleCheckout}
-          className="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-7 py-3 rounded-btn shadow-lg shadow-primary/30 hover:bg-primary-dark transition-colors"
+          className="cursor-pointer inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-7 py-3 rounded-btn shadow-lg shadow-primary/30 hover:bg-primary-dark transition-colors"
         >
-          Cek Pembayaran
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
+          Cek Pembayaran <Image src="/icons/right-arrow.svg" alt="arrow" width={16} height={16} className="brightness-0 invert" />
         </button>
       </div>
     </div>

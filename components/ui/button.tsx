@@ -6,6 +6,8 @@ interface ButtonProps {
   href?: string
   children: React.ReactNode
   icon?: React.ReactNode
+  onClick?: () => void
+  className?: string
 }
 
 const variantStyles: Record<NonNullable<ButtonProps["variant"]>, string> = {

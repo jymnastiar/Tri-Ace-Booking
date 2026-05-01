@@ -6,19 +6,28 @@ export function useAvailability({
   olahraga,
   jamOperasional,
   initialBookedSlots = [],
+  onCheckout,
 }: {
   olahraga: Olahraga[];
   jamOperasional: JamOperasional;
   initialBookedSlots?: [number, number][];
+  onCheckout?: (selected: [number, number][], olahragaSlug: string) => void;
 }) {
   const [selectedIdx, setSelectedIdx] = useState(0);
   const activeOlahraga = olahraga[selectedIdx] ?? olahraga[0];
 
-  const [bookedSlots, setBookedSlots] = useState<[number, number][]>(initialBookedSlots);
+  const [bookedSlots, setBookedSlots] =
+    useState<[number, number][]>(initialBookedSlots);
 
   const slots = useMemo(
-    () => generateSlots(jamOperasional.buka, jamOperasional.tutup, jamOperasional.slot_durasi_menit, activeOlahraga.courts.length),
-    [activeOlahraga, jamOperasional]
+    () =>
+      generateSlots(
+        jamOperasional.buka,
+        jamOperasional.tutup,
+        jamOperasional.slot_durasi_menit,
+        activeOlahraga.courts.length,
+      ),
+    [activeOlahraga, jamOperasional],
   );
 
   const [selected, setSelected] = useState<[number, number][]>([]);
@@ -53,9 +62,14 @@ export function useAvailability({
       alert("Silakan pilih slot waktu terlebih dahulu.");
       return;
     }
-    setBookedSlots((prev) => [...prev, ...selected]);
-    setSelected([]);
-    alert("Pembayaran berhasil! Slot telah dibooking.");
+
+    if (onCheckout) {
+      onCheckout(selected, activeOlahraga.slug);
+    } else {
+      setBookedSlots((prev) => [...prev, ...selected]);
+      setSelected([]);
+      alert("Simulasi: slot telah dibooking (belum terhubung ke server).");
+    }
   };
 
   useEffect(() => {
@@ -70,6 +84,6 @@ export function useAvailability({
     isUnavailable,
     isSelectedTemp,
     toggleSlot,
-    handleCheckout
+    handleCheckout,
   };
 }

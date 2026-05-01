@@ -8,12 +8,23 @@ import AvailabilityTable from '@/components/ui/availabilityTable';
 import MobileCTA from '@/components/ui/mobileCTA';
 import MapPlaceholder from '@/components/ui/mapPlaceholder';
 import { facEmoji } from '@/lib/facEmoji';
+import { createServerSupabase } from '@/lib/supabase/server';
+import VenueBookingSection from '@/components/layouts/booking/venuebook';
 
 export default async function VanueDetailPage({ params }: { params: { id: string } }) {
   const { id } = await params;
   const vanue = vanueData.find((item) => id === item.id);
-
   if (!vanue) return notFound();
+
+  const supabase = createServerSupabase();
+  const today = new Date().toISOString().split("T")[0];
+  const { data: bookedData } = await supabase
+    .from('bookings')
+    .select('ri, ci')
+    .eq('venue_id', vanue.id)
+    .eq('tanggal', today)
+    .in('status', ['pending', 'confirmed']);
+  const initialBookedSlots = bookedData?.map(b => [b.ri, b.ci] as [number, number]) ?? [];
 
   return (
     <section>
@@ -119,10 +130,12 @@ export default async function VanueDetailPage({ params }: { params: { id: string
 
             <hr className="section-divider" />
 
-            {/* Availability Table */}
-            <AvailabilityTable
+            {/* Ketersediaan */}
+            <VenueBookingSection
+              venueId={vanue.id}
               olahraga={vanue.olahraga}
               jamOperasional={vanue.jam_operasional}
+              initialBookedSlots={initialBookedSlots}
             />
           </div>
 
