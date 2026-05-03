@@ -3,13 +3,24 @@
 import type { Olahraga, JamOperasional } from "@/types/availability";
 import { useAvailability } from "@/hooks/useAvailability";
 import Image from "next/image";
+import { useState } from "react";
+
+const OLAHRAGA_ICON_MAP: Record<string, string> = {
+  badminton: "badminton.svg",
+  volley: "volley.svg",
+  basket: "basket.svg",
+  football: "football.svg",
+  tennis: "tennis.svg",
+  bowling: "bowling.svg",
+};
 
 export default function AvailabilityTable({
   olahraga,
   jamOperasional,
   initialBookedSlots = [],
-  venueId,
   tanggal,
+  onTanggalChange,
+  onOlahragaChange,
   onCheckout,
 }: {
   olahraga: Olahraga[];
@@ -17,6 +28,8 @@ export default function AvailabilityTable({
   initialBookedSlots?: [number, number][];
   venueId: string;
   tanggal: string;
+  onTanggalChange: (tgl: string) => void;
+  onOlahragaChange: (slug: string) => void;
   onCheckout: (selectedSlots: [number, number][], olahragaSlug: string) => void;
 }) {
   const {
@@ -30,6 +43,14 @@ export default function AvailabilityTable({
     handleCheckout
   } = useAvailability({ olahraga, jamOperasional, initialBookedSlots, onCheckout });
 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleOlahragaSelect = (idx: number) => {
+    setSelectedIdx(idx);
+    onOlahragaChange(olahraga[idx].slug);
+    setDropdownOpen(false);
+  };
+
   return (
     <div className="animate-fade-up stagger-5" id="ketersediaan">
       <h2 className="font-bold text-title text-xl mb-1">Cek Ketersediaan</h2>
@@ -40,23 +61,56 @@ export default function AvailabilityTable({
           <label className="block text-xs font-semibold text-title mb-1.5">Tanggal</label>
           <input
             type="date"
-            defaultValue="2026-04-29"
-            className="w-full px-3 py-2.5 bg-white border border-border rounded-xl text-sm text-title focus:outline-none focus:border-primary transition-colors shadow-sm custom-date-input"
+            value={tanggal}
+            onChange={(e) => onTanggalChange(e.target.value)}
+            className="w-full py-2.5 bg-white border border-border rounded-xl text-sm text-title focus:outline-none focus:border-primary transition-colors shadow-sm custom-date-input"
           />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 relative">
           <label className="block text-xs font-semibold text-title mb-1.5">Pilih Olahraga</label>
-          <select
-            className="w-full px-3 py-2.5 bg-white border border-border rounded-xl text-sm text-title focus:outline-none focus:border-primary transition-colors shadow-sm custom-select"
-            value={selectedIdx}
-            onChange={(e) => setSelectedIdx(Number(e.target.value))}
+          <button
+            type="button"
+            onClick={() => setDropdownOpen((prev) => !prev)}
+            className="w-full flex items-center gap-2 px-3 py-2.5 bg-white border border-border rounded-xl text-sm text-title focus:outline-none focus:border-primary transition-colors shadow-sm text-left"
           >
-            {olahraga.map((o, idx) => (
-              <option key={o.slug} value={idx}>
-                {o.ikon} {o.nama} – Rp {o.harga_per_jam.toLocaleString("id-ID")}/jam
-              </option>
-            ))}
-          </select>
+            {OLAHRAGA_ICON_MAP[olahraga[selectedIdx]?.slug] && (
+              <Image
+                src={`/icons/${OLAHRAGA_ICON_MAP[olahraga[selectedIdx].slug]}`}
+                alt={olahraga[selectedIdx].nama}
+                width={16}
+                height={16}
+              />
+            )}
+            <span className="flex-1 truncate">
+              {olahraga[selectedIdx]?.nama} – Rp {olahraga[selectedIdx]?.harga_per_jam.toLocaleString("id-ID")}/jam
+            </span>
+            <Image src="/icons/dropdown.svg" alt="Dropdown" width={16} height={16} className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`}/>
+          </button>
+          {dropdownOpen && (
+            <ul className="absolute z-20 mt-1 w-full bg-white border border-border rounded-xl shadow-lg overflow-hidden">
+              {olahraga.map((o, idx) => (
+                <li key={o.slug}>
+                  <button
+                    type="button"
+                    onClick={() => handleOlahragaSelect(idx)}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2.5 text-sm text-left hover:bg-surface transition-colors ${
+                      idx === selectedIdx ? "bg-surface font-semibold text-primary" : "text-title"
+                    }`}
+                  >
+                    {OLAHRAGA_ICON_MAP[o.slug] && (
+                      <Image
+                        src={`/icons/${OLAHRAGA_ICON_MAP[o.slug]}`}
+                        alt={o.nama}
+                        width={16}
+                        height={16}
+                      />
+                    )}
+                    <span>{o.nama} – Rp {o.harga_per_jam.toLocaleString("id-ID")}/jam</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
 

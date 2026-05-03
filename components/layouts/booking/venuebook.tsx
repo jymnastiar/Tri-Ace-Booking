@@ -1,8 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import AvailabilityTable from "@/components/ui/availabilityTable";
-import { createBookingReturnId } from "@/app/actions/booking";
+import { createBookingReturnId, getBookedSlots } from "@/app/actions/booking";
 import type { Olahraga, JamOperasional } from "@/types/availability";
 
 export default function VenueBookingSection({
@@ -17,16 +18,26 @@ export default function VenueBookingSection({
   initialBookedSlots: [number, number][];
 }) {
   const router = useRouter();
+  const today = new Date().toISOString().split("T")[0];
+  const [tanggal, setTanggal] = useState(today);
+  const [activeOlahraga, setActiveOlahraga] = useState(olahraga[0]?.slug ?? "");
+  const [bookedSlots, setBookedSlots] = useState<[number, number][]>(initialBookedSlots);
+
+  useEffect(() => {
+    async function refresh() {
+      const slots = await getBookedSlots(venueId, activeOlahraga, tanggal);
+      setBookedSlots(slots);
+    }
+    refresh();
+  }, [tanggal, activeOlahraga, venueId]);
 
   const handleCheckout = async (selectedSlots: [number, number][], olahragaSlug: string) => {
-    
     const bookingGroupId = await createBookingReturnId({
       venueId,
       olahragaSlug,
-      tanggal: new Date().toISOString().split("T")[0],
+      tanggal,
       selectedSlots,
     });
-
     router.push(`/checkout/${bookingGroupId}`);
   };
 
@@ -34,9 +45,11 @@ export default function VenueBookingSection({
     <AvailabilityTable
       olahraga={olahraga}
       jamOperasional={jamOperasional}
-      initialBookedSlots={initialBookedSlots}
+      initialBookedSlots={bookedSlots}
       venueId={venueId}
-      tanggal={new Date().toISOString().split("T")[0]}
+      tanggal={tanggal}
+      onTanggalChange={setTanggal}
+      onOlahragaChange={setActiveOlahraga}
       onCheckout={handleCheckout}
     />
   );

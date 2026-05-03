@@ -38,3 +38,22 @@ export async function createBookingReturnId({
 
   return bookingGroupId;
 }
+
+export async function getBookedSlots(
+  venueId: string,
+  olahragaSlug: string,
+  tanggal: string,
+): Promise<[number, number][]> {
+  const supabase = createServerSupabase();
+
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("ri, ci")
+    .eq("venue_id", venueId)
+    .eq("olahraga_slug", olahragaSlug)
+    .eq("tanggal", tanggal)
+    .eq("status", "confirmed");
+
+  if (error) return [];
+  return data?.map((b) => [b.ri, b.ci] as [number, number]) ?? [];
+}

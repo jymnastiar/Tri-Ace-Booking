@@ -19,6 +19,10 @@ export function useAvailability({
   const [bookedSlots, setBookedSlots] =
     useState<[number, number][]>(initialBookedSlots);
 
+  useEffect(() => {
+    setBookedSlots(initialBookedSlots);
+  }, [initialBookedSlots]);
+
   const slots = useMemo(
     () =>
       generateSlots(
