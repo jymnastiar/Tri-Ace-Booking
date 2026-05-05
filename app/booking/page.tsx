@@ -123,7 +123,7 @@ function DesktopRow({
 
           {status === 'pending' && (
             <>
-              <Button variant='buy' href={`/booking/${groupId}/bayar`}>Bayar</Button>
+              <Button variant='buy' href={`/checkout/${groupId}`}>Bayar</Button>
               <Button variant='cancel' href={`/booking/${groupId}/batalkan`}>Batalkan</Button>
             </>
           )}
@@ -200,7 +200,7 @@ function MobileCard({
 
         {status === 'pending' && (
           <>
-            <Button variant='buy' href={`/booking/${groupId}/bayar`}>Bayar</Button>
+            <Button variant='buy' href={`/checkout/${groupId}`}>Bayar</Button>
             <Button variant='cancel' href={`/booking/${groupId}/batalkan`}>Batalkan</Button>
           </>
         )}

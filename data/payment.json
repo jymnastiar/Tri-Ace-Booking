@@ -1,0 +1,37 @@
+[
+  {
+    "id": "BCA",
+    "name": "Bank BCA",
+    "logo": "/images/payment/bank_bca.png"
+  },
+  {
+    "id": "BRI",
+    "name": "Bank BRI",
+    "logo": "/images/payment/bank_bri.png"
+  },
+  {
+    "id": "BNI",
+    "name": "Bank BNI",
+    "logo": "/images/payment/bank_bni.png"
+  },
+  {
+    "id": "DANA",
+    "name": "DANA",
+    "logo": "/images/payment/dana.png"
+  },
+  {
+    "id": "OVO",
+    "name": "OVO",
+    "logo": "/images/payment/ovo.png"
+  },
+  {
+    "id": "GOPAY",
+    "name": "GOPAY",
+    "logo": "/images/payment/gopay.png"
+  },
+  {
+    "id": "QRIS",
+    "name": "QRIS",
+    "logo": "/images/payment/qris.png"
+  }
+]
