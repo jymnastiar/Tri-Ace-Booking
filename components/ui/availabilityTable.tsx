@@ -4,6 +4,7 @@ import type { Olahraga, JamOperasional } from "@/types/availability";
 import { useAvailability } from "@/hooks/useAvailability";
 import Image from "next/image";
 import { useState } from "react";
+import AlertModal from "@/components/ui/alertModal";
 
 const OLAHRAGA_ICON_MAP: Record<string, string> = {
   badminton: "badminton.svg",
@@ -30,7 +31,7 @@ export default function AvailabilityTable({
   tanggal: string;
   onTanggalChange: (tgl: string) => void;
   onOlahragaChange: (slug: string) => void;
-  onCheckout: (selectedSlots: [number, number][], olahragaSlug: string) => void;
+  onCheckout: (selectedSlots: [number, number][], olahragaSlug: string) => Promise<void> | void;
 }) {
   const {
     selectedIdx,
@@ -40,7 +41,14 @@ export default function AvailabilityTable({
     isUnavailable,
     isSelectedTemp,
     toggleSlot,
-    handleCheckout
+    handleCheckout,
+    slotLimitAlert,
+    setSlotLimitAlert,
+    emptySlotAlert,
+    setEmptySlotAlert,
+    simulationAlert,
+    setSimulationAlert,
+    isCheckingOut,
   } = useAvailability({ olahraga, jamOperasional, initialBookedSlots, onCheckout });
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -166,11 +174,64 @@ export default function AvailabilityTable({
       <div className="mt-6">
         <button
           onClick={handleCheckout}
-          className="cursor-pointer inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-7 py-3 rounded-btn shadow-lg shadow-primary/30 hover:bg-primary-dark transition-colors"
+          disabled={isCheckingOut}
+          className={`inline-flex items-center gap-2 font-semibold text-sm px-7 py-3 rounded-btn shadow-lg transition-all ${
+            isCheckingOut
+              ? "bg-primary/70 text-white cursor-not-allowed shadow-primary/20"
+              : "cursor-pointer bg-primary text-white hover:bg-primary-dark shadow-primary/30"
+          }`}
         >
-          Cek Pembayaran <Image src="/icons/right-arrow.svg" alt="arrow" width={16} height={16} className="brightness-0 invert" />
+          {isCheckingOut ? (
+            <>
+              <svg
+                className="checkout-spinner"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                width={16}
+                height={16}
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12" cy="12" r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                />
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                />
+              </svg>
+              Memproses...
+            </>
+          ) : (
+            <>
+              Cek Pembayaran
+              <Image src="/icons/right-arrow.svg" alt="arrow" width={16} height={16} className="brightness-0 invert" />
+            </>
+          )}
         </button>
       </div>
+
+      <AlertModal
+        open={slotLimitAlert}
+        message="Maksimal 2 slot per lapangan yang bisa kamu pilih."
+        onClose={() => setSlotLimitAlert(false)}
+        type="warning"
+      />
+      <AlertModal
+        open={emptySlotAlert}
+        message="Silakan pilih minimal satu slot waktu sebelum melanjutkan ke pembayaran."
+        onClose={() => setEmptySlotAlert(false)}
+        type="info"
+      />
+      <AlertModal
+        open={simulationAlert}
+        message="Slot berhasil dibooking dalam mode simulasi. Belum terhubung ke server."
+        onClose={() => setSimulationAlert(false)}
+        type="success"
+      />
     </div>
   );
 }

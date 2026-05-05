@@ -11,7 +11,7 @@ export function useAvailability({
   olahraga: Olahraga[];
   jamOperasional: JamOperasional;
   initialBookedSlots?: [number, number][];
-  onCheckout?: (selected: [number, number][], olahragaSlug: string) => void;
+  onCheckout?: (selected: [number, number][], olahragaSlug: string) => Promise<void> | void;
 }) {
   const [selectedIdx, setSelectedIdx] = useState(0);
   const activeOlahraga = olahraga[selectedIdx] ?? olahraga[0];
@@ -36,6 +36,18 @@ export function useAvailability({
 
   const [selected, setSelected] = useState<[number, number][]>([]);
 
+  /** State untuk popup "Maksimal 2 slot per lapangan" */
+  const [slotLimitAlert, setSlotLimitAlert] = useState(false);
+
+  /** State untuk popup "Silakan pilih slot waktu terlebih dahulu" */
+  const [emptySlotAlert, setEmptySlotAlert] = useState(false);
+
+  /** State untuk popup simulasi booking berhasil */
+  const [simulationAlert, setSimulationAlert] = useState(false);
+
+  /** State loading saat proses checkout berlangsung */
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
   const isUnavailable = (ri: number, ci: number) => {
     if (!slots[ri]?.avail[ci]) return true;
     return bookedSlots.some(([r, c]) => r === ri && c === ci);
@@ -53,7 +65,7 @@ export function useAvailability({
       } else {
         const countInColumn = prev.filter(([r, c]) => c === ci).length;
         if (countInColumn >= 2) {
-          alert("Maksimal 2 slot per lapangan.");
+          setSlotLimitAlert(true);
           return prev;
         }
         return [...prev, [ri, ci]];
@@ -61,18 +73,23 @@ export function useAvailability({
     });
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (selected.length === 0) {
-      alert("Silakan pilih slot waktu terlebih dahulu.");
+      setEmptySlotAlert(true);
       return;
     }
 
     if (onCheckout) {
-      onCheckout(selected, activeOlahraga.slug);
+      setIsCheckingOut(true);
+      try {
+        await onCheckout(selected, activeOlahraga.slug);
+      } finally {
+        setIsCheckingOut(false);
+      }
     } else {
       setBookedSlots((prev) => [...prev, ...selected]);
       setSelected([]);
-      alert("Simulasi: slot telah dibooking (belum terhubung ke server).");
+      setSimulationAlert(true);
     }
   };
 
@@ -89,5 +106,12 @@ export function useAvailability({
     isSelectedTemp,
     toggleSlot,
     handleCheckout,
+    slotLimitAlert,
+    setSlotLimitAlert,
+    emptySlotAlert,
+    setEmptySlotAlert,
+    simulationAlert,
+    setSimulationAlert,
+    isCheckingOut,
   };
 }
