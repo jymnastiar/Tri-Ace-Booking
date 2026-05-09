@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { X, Copy, Wallet, Check } from "lucide-react";
+import { X, Copy, Wallet, Check, Loader2 } from "lucide-react";
 import Link from "next/link";
-import { createClientSupabase } from "@/lib/supabase/client";
+import { confirmBookingPayment } from "@/app/actions/booking";
 
 interface ConfirmDesignProps {
   bookingId: string;
@@ -13,12 +13,13 @@ interface ConfirmDesignProps {
 
 export default function ConfirmDesign({ bookingId, total }: ConfirmDesignProps) {
   const router = useRouter();
-  const supabase = createClientSupabase();
   const searchParams = useSearchParams();
   const methodId = searchParams.get("method") || "BCA";
 
   const [timeLeft, setTimeLeft] = useState(21533); // 5 jam 58 menit 53 detik
   const [isCopied, setIsCopied] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
     if (timeLeft <= 0) return;
@@ -54,13 +55,14 @@ export default function ConfirmDesign({ bookingId, total }: ConfirmDesignProps) 
   const activeMethod = paymentData[methodId] || paymentData.BCA;
 
   const handleSelesai = async () => {
-    const { error } = await supabase
-      .from("bookings")
-      .update({ status: "confirmed" })
-      .eq("booking_group", bookingId);
+    setIsLoading(true);
+    setErrorMsg(null);
 
-    if (error) {
-      alert("Gagal mengkonfirmasi pembayaran.");
+    const result = await confirmBookingPayment(bookingId);
+
+    if (!result.success) {
+      setErrorMsg(result.error ?? "Gagal mengkonfirmasi pembayaran. Silakan coba lagi.");
+      setIsLoading(false);
       return;
     }
 
@@ -142,12 +144,23 @@ export default function ConfirmDesign({ bookingId, total }: ConfirmDesignProps) 
             <span>Hanya menerima dari {activeMethod.name}</span>
           </div>
 
+          {errorMsg && (
+            <div className="mt-2 text-sm text-red-600 text-center font-medium bg-red-50 border border-red-200 rounded-lg px-4 py-2">
+              {errorMsg}
+            </div>
+          )}
+
           <div className="pt-4">
             <button
               onClick={handleSelesai}
-              className="w-full max-w-xs mx-auto block bg-[#30A9E3] text-white py-3 rounded-xl font-bold text-xl text-center hover:bg-[#2898cc] transition-all shadow-lg active:scale-95"
+              disabled={isLoading}
+              className="w-full max-w-xs mx-auto flex items-center justify-center gap-2 bg-[#30A9E3] text-white py-3 rounded-xl font-bold text-xl text-center hover:bg-[#2898cc] transition-all shadow-lg active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Selesai
+              {isLoading ? (
+                <><Loader2 size={20} className="animate-spin" /> Memproses...</>
+              ) : (
+                "Selesai"
+              )}
             </button>
           </div>
         </div>

@@ -39,6 +39,23 @@ export async function createBookingReturnId({
   return bookingGroupId;
 }
 
+export async function confirmBookingPayment(
+  bookingGroupId: string,
+): Promise<{ success: boolean; error?: string }> {
+  const supabase = createServerSupabase();
+
+  const { error } = await supabase
+    .from("bookings")
+    .update({ status: "confirmed" })
+    .eq("booking_group", bookingGroupId);
+
+  if (error) {
+    return { success: false, error: error.message };
+  }
+
+  return { success: true };
+}
+
 export async function getBookedSlots(
   venueId: string,
   olahragaSlug: string,
