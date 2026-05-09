@@ -4,9 +4,9 @@ import { redirect } from "next/navigation";
 import Button from "@/components/ui/button";
 import Logo from "@/public/icons/logo";
 import { createAuthSupabase } from "@/lib/supabase/server";
+import LogoutButton from "@/components/layouts/admin/logoutbtn";
 
 export default async function AdminDashboardPage() {
-  // Middleware sudah menjaga route ini, tapi kita tetap verifikasi sebagai double-check
   const supabase = await createAuthSupabase();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -48,6 +48,12 @@ export default async function AdminDashboardPage() {
     },
   ];
 
+  const handleLogout = async () => {
+    const supabase = await createAuthSupabase();
+    await supabase.auth.signOut();
+    redirect("/login");
+  };
+
   return (
     <div className="min-h-screen bg-surface">
       <header className="navbar sticky top-0 z-50 bg-white border-b border-border shadow-sm">
@@ -73,15 +79,11 @@ export default async function AdminDashboardPage() {
 
           <div className="hidden md:flex items-center gap-2.5 animate-fade-in">
             <span className="text-sm text-body">Admin Panel</span>
-            <Button variant="secondary" size="md" href="/logout">
-              Logout
-            </Button>
+            <LogoutButton/>
           </div>
 
           <div className="md:hidden">
-            <Button variant="secondary" size="sm" href="/logout">
-              Logout
-            </Button>
+            <LogoutButton/>
           </div>
         </div>
       </header>

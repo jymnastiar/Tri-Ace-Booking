@@ -5,3 +5,4 @@ export { default as Home } from "./Home";
 export { default as HumbergerIcon } from "./HumbergerIcon";
 export { default as MapPin } from "./MapPin";
 export { default as Star } from "./Star";
+export { default as BigShuttlecockIcon } from "./BigShuttlecockIcon";

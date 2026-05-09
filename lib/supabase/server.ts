@@ -2,10 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
-/**
- * Service Role client — bypass RLS, untuk operasi data (insert/update/delete).
- * JANGAN dipakai untuk cek session user.
- */
+// Service Role client
 export function createServerSupabase() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -14,10 +11,7 @@ export function createServerSupabase() {
   );
 }
 
-/**
- * Auth-aware client — membaca cookies browser, untuk cek session & role user.
- * Dipakai di Server Components yang perlu tahu siapa user yang sedang login.
- */
+// Auth-aware client
 export async function createAuthSupabase() {
   const cookieStore = await cookies();
 
@@ -34,9 +28,7 @@ export async function createAuthSupabase() {
             cookiesToSet.forEach(({ name, value, options }) =>
               cookieStore.set(name, value, options),
             );
-          } catch {
-            // Server Component tidak bisa set cookies — diabaikan
-          }
+          } catch {}
         },
       },
     },
