@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Badge from '@/components/ui/badge';
 import Button from '@/components/ui/button';
 import Gallery from '@/components/ui/gallery';
-import AvailabilityTable from '@/components/ui/availabilityTable';
 import MobileCTA from '@/components/ui/mobileCTA';
 import MapPlaceholder from '@/components/ui/mapPlaceholder';
 import { facEmoji } from '@/lib/facEmoji';

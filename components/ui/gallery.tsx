@@ -7,7 +7,7 @@ export default function Gallery({ images }: { images: string[] }) {
   return (
     <div className="flex gap-3 mb-6 animate-fade-up stagger-1">
       {/* Main image */}
-      <div className="flex-1 min-w-0 relative rounded-2xl overflow-hidden" style={{ height: 280 }}>
+      <div className="flex-1 min-w-0 relative rounded-2xl overflow-hidden" style={{ height: 400 }}>
         <img
           src={mainImg}
           alt="Venue main"
