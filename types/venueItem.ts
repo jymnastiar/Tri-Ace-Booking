@@ -8,4 +8,6 @@ export interface VenueItem {
   harga_mulai: number;
   foto: string[];
   jenis_olahraga: string[];
+  kota: string;
+  provinsi: string;
 }

@@ -1,6 +1,9 @@
 "use server";
-
-import { createServerSupabase } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
+import {
+  createServerSupabase,
+  createAuthSupabase,
+} from "@/lib/supabase/server";
 
 interface CreateBookingParams {
   venueId: string;
@@ -15,6 +18,17 @@ export async function createBookingReturnId({
   tanggal,
   selectedSlots,
 }: CreateBookingParams): Promise<string> {
+  // Auth client hanya untuk ambil identitas user
+  const authClient = await createAuthSupabase();
+  const {
+    data: { user },
+    error: authError,
+  } = await authClient.auth.getUser();
+  if (authError || !user) {
+    redirect("/login");
+  }
+
+  // Service-role client untuk operasi database (bypass RLS)
   const supabase = createServerSupabase();
 
   const bookingGroupId = crypto.randomUUID();
@@ -26,7 +40,7 @@ export async function createBookingReturnId({
     tanggal,
     ri,
     ci,
-    user_id: "guest",
+    user_id: user.id,
     status: "pending",
   }));
 

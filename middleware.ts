@@ -27,7 +27,9 @@ export async function middleware(request: NextRequest) {
   );
 
   // Ambil data user yang sedang login
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   // Proteksi /admin — hanya user dengan role "admin" yang boleh masuk
   if (request.nextUrl.pathname.startsWith("/admin")) {
@@ -46,6 +48,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Middleware hanya aktif untuk route /admin dan semua sub-routenya
   matcher: ["/admin/:path*"],
 };

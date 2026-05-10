@@ -1,4 +1,5 @@
-import { createServerSupabase } from '@/lib/supabase/server';
+import { createAuthSupabase, createServerSupabase } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import vanueData from '@/data/vanue.json';
 import Badge from '@/components/ui/badge';
@@ -237,10 +238,19 @@ function EmptyState() {
 }
 
 export default async function BookingPage() {
+  // Auth client untuk ambil identitas user
+  const authClient = await createAuthSupabase();
+  const { data: { user } } = await authClient.auth.getUser();
+  if (!user) {
+    redirect('/login');
+  }
+
+  // Service-role client untuk query database (bypass RLS)
   const supabase = createServerSupabase();
   const { data: bookings, error } = await supabase
     .from('bookings')
     .select('*')
+    .eq('user_id', user.id)
     .order('created_at', { ascending: false })
     .returns<Booking[]>();
 

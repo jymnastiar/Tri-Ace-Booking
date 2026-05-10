@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Badge from './badge';
 import type { VenueItem } from '@/types/venueItem';
 import Link from 'next/link';

@@ -24,7 +24,7 @@ export default function SignInPage() {
 
   // ── Fungsi Login ──
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault(); // cegah reload halaman
+    e.preventDefault();
     setError(null);
 
     // Validasi sederhana
@@ -39,7 +39,6 @@ export default function SignInPage() {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
-      // Terjemahkan pesan error ke Bahasa Indonesia
       if (error.message.includes("Invalid login credentials")) {
         setError("Email atau kata sandi salah. Silakan coba lagi.");
       } else if (error.message.includes("Email not confirmed")) {
@@ -51,9 +50,8 @@ export default function SignInPage() {
       return;
     }
 
-    // Berhasil → arahkan ke halaman utama
     router.push("/");
-    router.refresh(); // refresh agar session terbaca
+    router.refresh();
   };
 
   return (
@@ -65,7 +63,7 @@ export default function SignInPage() {
           src="/images/background/bg-sign-in.png"
           alt="Sign In Background"
           fill
-          className="object-contain object-bottom lg:object-center animate-float"
+          className="object-contain object-bottom lg:object-center"
           priority
         />
         <div className="absolute top-5 left-6 z-10">
@@ -129,20 +127,7 @@ export default function SignInPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#0EA5E9] transition-colors"
-                  aria-label={showPassword ? "Sembunyikan kata sandi" : "Tampilkan kata sandi"}
-                >
-                  {showPassword ? (
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                      <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" />
-                      <line x1="1" y1="1" x2="23" y2="23" />
-                    </svg>
-                  ) : (
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  )}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#0EA5E9] transition-colors">
                 </button>
               </div>
             </div>
