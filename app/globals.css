@@ -94,6 +94,11 @@
   border-radius: 9999px;
 }
 
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
 .hero-bg {
   background: linear-gradient(135deg, #0f172a 0%, #0c4a6e 55%, #075985 100%);
   position: relative;

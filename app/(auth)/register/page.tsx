@@ -6,12 +6,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Logo from "@/public/icons/logo";
 import { createClientSupabase } from "@/lib/supabase/client";
+import { registerSchema } from "@/lib/validations/auth";
 
 export default function SignUpPage() {
   const router = useRouter();
   const supabase = createClientSupabase();
 
-  // ── State form ──
   const [namaDepan, setNamaDepan] = useState("");
   const [namaBelakang, setNamaBelakang] = useState("");
   const [email, setEmail] = useState("");
@@ -20,40 +20,48 @@ export default function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  // ── State UI ──
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [globalError, setGlobalError] = useState<string | null>(null);
+  const [errors, setErrors] = useState<{
+    namaDepan?: string;
+    email?: string;
+    password?: string;
+    konfirmasi?: string;
+  }>({});
   const [sukses, setSukses] = useState(false);
   const [pressed, setPressed] = useState(false);
 
-  // ── Fungsi Register ──
   const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault(); // cegah reload halaman
-    setError(null);
+    e.preventDefault();
+    setErrors({});
+    setGlobalError(null);
 
-    // Validasi sederhana
-    if (!namaDepan || !email || !password || !konfirmasi) {
-      setError("Semua kolom wajib diisi.");
-      return;
-    }
-    if (password.length < 8) {
-      setError("Kata sandi minimal 8 karakter.");
-      return;
-    }
-    if (password !== konfirmasi) {
-      setError("Kata sandi dan konfirmasi tidak cocok.");
+    // Zod validation
+    const result = registerSchema.safeParse({
+      namaDepan,
+      namaBelakang,
+      email,
+      password,
+      konfirmasi,
+    });
+
+    if (!result.success) {
+      const fieldErrors: any = {};
+      result.error.issues.forEach((issue) => {
+        const field = issue.path[0] as string;
+        if (field) fieldErrors[field] = issue.message;
+      });
+      setErrors(fieldErrors);
       return;
     }
 
     setLoading(true);
 
-    // Kirim ke Supabase
     const { error } = await supabase.auth.signUp({
       email,
       password,
       options: {
         data: {
-          // Simpan nama lengkap di profil user
           full_name: `${namaDepan} ${namaBelakang}`.trim(),
           first_name: namaDepan,
           last_name: namaBelakang,
@@ -63,22 +71,20 @@ export default function SignUpPage() {
 
     if (error) {
       if (error.message.includes("already registered")) {
-        setError("Email ini sudah terdaftar. Silakan masuk atau gunakan email lain.");
+        setGlobalError("Email ini sudah terdaftar. Silakan masuk atau gunakan email lain.");
       } else if (error.message.includes("Password should be")) {
-        setError("Kata sandi terlalu lemah. Gunakan kombinasi huruf dan angka.");
+        setGlobalError("Kata sandi terlalu lemah. Gunakan kombinasi huruf dan angka.");
       } else {
-        setError(error.message);
+        setGlobalError(error.message);
       }
       setLoading(false);
       return;
     }
 
-    // Berhasil → tampilkan pesan sukses
     setSukses(true);
     setLoading(false);
   };
 
-  // ── Tampilan setelah berhasil daftar ──
   if (sukses) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white px-6">
@@ -107,15 +113,13 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
-
-      {/* ── LEFT PANEL — White form ── */}
+      {/* LEFT PANEL — White form */}
       <div className="flex-1 flex items-center justify-center bg-white px-6 py-10 order-2 lg:order-1">
-        <form
-          onSubmit={handleRegister}
-          className="w-full max-w-md animate-fade-up"
-        >
+        <form onSubmit={handleRegister} className="w-full max-w-md animate-fade-up">
           <div className="mb-7">
-            <h1 className="text-3xl font-extrabold text-primary-dark mb-1.5 tracking-tight">Buat akun baru ✨</h1>
+            <h1 className="text-3xl font-extrabold text-primary-dark mb-1.5 tracking-tight">
+              Buat akun baru ✨
+            </h1>
             <p className="text-[#64748B] text-sm leading-relaxed">
               Selamat datang di{" "}
               <span className="font-semibold text-[#0EA5E9]">Tri-Ace Booking!</span>{" "}
@@ -124,21 +128,32 @@ export default function SignUpPage() {
           </div>
 
           <div className="space-y-4">
-
-            {/* Pesan Error */}
-            {error && (
+            {/* Global Error */}
+            {globalError && (
               <div className="flex items-start gap-2.5 px-4 py-3 bg-red-50 border border-red-200 rounded-xl text-sm text-red-600">
-                <svg className="shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+                <svg
+                  className="shrink-0 mt-0.5"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
                 </svg>
-                {error}
+                {globalError}
               </div>
             )}
 
             {/* Nama Depan + Belakang */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">Nama Depan</label>
+                <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">
+                  Nama Depan
+                </label>
                 <input
                   type="text"
                   placeholder="John"
@@ -146,9 +161,14 @@ export default function SignUpPage() {
                   onChange={(e) => setNamaDepan(e.target.value)}
                   className="w-full px-4 py-3 bg-[#F1F5F9] border-2 border-transparent rounded-xl text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#0EA5E9] focus:bg-white transition-all duration-200"
                 />
+                {errors.namaDepan && (
+                  <p className="text-red-500 text-xs mt-1">{errors.namaDepan}</p>
+                )}
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">Nama Belakang</label>
+                <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">
+                  Nama Belakang
+                </label>
                 <input
                   type="text"
                   placeholder="Doe"
@@ -161,7 +181,9 @@ export default function SignUpPage() {
 
             {/* Email */}
             <div>
-              <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">Alamat Email</label>
+              <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">
+                Alamat Email
+              </label>
               <input
                 type="email"
                 placeholder="nama@email.com"
@@ -169,12 +191,17 @@ export default function SignUpPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 bg-[#F1F5F9] border-2 border-transparent rounded-xl text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#0EA5E9] focus:bg-white transition-all duration-200"
               />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+              )}
             </div>
 
             {/* Kata Sandi + Konfirmasi */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">Kata Sandi</label>
+                <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">
+                  Kata Sandi
+                </label>
                 <div className="relative">
                   <input
                     type={showPassword ? "text" : "password"}
@@ -183,13 +210,32 @@ export default function SignUpPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full px-4 py-3 pr-10 bg-[#F1F5F9] border-2 border-transparent rounded-xl text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#0EA5E9] focus:bg-white transition-all duration-200"
                   />
-                  <button type="button" onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#0EA5E9] transition-colors">
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#0EA5E9] transition-colors"
+                  >
+                    {showPassword ? (
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                        <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" />
+                        <line x1="1" y1="1" x2="23" y2="23" />
+                      </svg>
+                    ) : (
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                    )}
                   </button>
                 </div>
+                {errors.password && (
+                  <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+                )}
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">Konfirmasi</label>
+                <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">
+                  Konfirmasi
+                </label>
                 <div className="relative">
                   <input
                     type={showConfirm ? "text" : "password"}
@@ -198,8 +244,11 @@ export default function SignUpPage() {
                     onChange={(e) => setKonfirmasi(e.target.value)}
                     className="w-full px-4 py-3 pr-10 bg-[#F1F5F9] border-2 border-transparent rounded-xl text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#0EA5E9] focus:bg-white transition-all duration-200"
                   />
-                  <button type="button" onClick={() => setShowConfirm(!showConfirm)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#0EA5E9] transition-colors">
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirm(!showConfirm)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#0EA5E9] transition-colors"
+                  >
                     {showConfirm ? (
                       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                         <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" />
@@ -213,6 +262,9 @@ export default function SignUpPage() {
                     )}
                   </button>
                 </div>
+                {errors.konfirmasi && (
+                  <p className="text-red-500 text-xs mt-1">{errors.konfirmasi}</p>
+                )}
               </div>
             </div>
 
@@ -237,7 +289,9 @@ export default function SignUpPage() {
                   </svg>
                   Memproses...
                 </>
-              ) : "Buat Akun"}
+              ) : (
+                "Buat Akun"
+              )}
             </button>
 
             {/* Login link */}
@@ -258,7 +312,10 @@ export default function SignUpPage() {
 
           {/* Social buttons */}
           <div className="grid grid-cols-2 gap-3">
-            <button type="button" className="flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-[#E2E8F0] text-[#334155] text-sm font-semibold hover:border-[#0EA5E9] hover:text-[#0EA5E9] hover:bg-[#F0F9FF] active:scale-[.97] transition-all duration-150">
+            <button
+              type="button"
+              className="flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-[#E2E8F0] text-[#334155] text-sm font-semibold hover:border-[#0EA5E9] hover:text-[#0EA5E9] hover:bg-[#F0F9FF] active:scale-[.97] transition-all duration-150"
+            >
               <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
                 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
@@ -267,7 +324,10 @@ export default function SignUpPage() {
               </svg>
               Google
             </button>
-            <button type="button" className="flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-[#E2E8F0] text-[#334155] text-sm font-semibold hover:border-[#0EA5E9] hover:text-[#0EA5E9] hover:bg-[#F0F9FF] active:scale-[.97] transition-all duration-150">
+            <button
+              type="button"
+              className="flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-[#E2E8F0] text-[#334155] text-sm font-semibold hover:border-[#0EA5E9] hover:text-[#0EA5E9] hover:bg-[#F0F9FF] active:scale-[.97] transition-all duration-150"
+            >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
               </svg>
@@ -277,7 +337,7 @@ export default function SignUpPage() {
         </form>
       </div>
 
-      {/* ── RIGHT PANEL — Illustration background ── */}
+      {/* RIGHT PANEL — Illustration background */}
       <div className="relative lg:w-1/2 h-52 lg:h-auto shrink-0 overflow-hidden order-1 lg:order-2">
         <Image
           src="/images/background/bg-sign-up.png"
