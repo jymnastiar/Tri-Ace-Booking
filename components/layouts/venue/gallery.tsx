@@ -13,14 +13,6 @@ export default function Gallery({ images }: { images: string[] }) {
           alt="Venue main"
           className="gallery-main w-full h-full object-cover"
         />
-        <button className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm text-title text-xs font-semibold px-3 py-1.5 rounded-lg shadow hover:bg-white transition-colors border border-border">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <path d="M21 15l-5-5L5 21" />
-          </svg>
-          Lihat semua foto
-        </button>
       </div>
 
       {/* Thumbnails */}

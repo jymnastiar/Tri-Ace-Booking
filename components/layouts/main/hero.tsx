@@ -1,4 +1,5 @@
 import Badge from "@/components/ui/badge";
+import { Star } from "@/src/icons";
 
 export default function MainHero() {
   return (
@@ -23,7 +24,7 @@ export default function MainHero() {
 
         {/* <!-- Quick stat pills --> */}
         <div className="animate-fade-up flex flex-wrap justify-center gap-3">
-          <Badge variant="stats" icon="/icons/star.svg">
+          <Badge variant="stats" icon={<Star color="#FACC15" width={18} height={18}/>}>
             4.8 Rating
           </Badge>
           <Badge variant="stats" icon="/icons/userstat.svg">

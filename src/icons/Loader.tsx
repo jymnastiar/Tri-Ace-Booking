@@ -1,19 +1,18 @@
 import * as React from "react";
 import type { SVGProps } from "react";
 
-const Eye = (props: SVGProps<SVGSVGElement>) => (
+const Loader = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="2"
+    strokeWidth="2.5"
     strokeLinecap="round"
     strokeLinejoin="round"
     {...props}
   >
-    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-    <circle cx="12" cy="12" r="3" />
+    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
   </svg>
 );
 
-export default Eye;
+export default Loader;

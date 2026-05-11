@@ -518,5 +518,322 @@
         ]
       }
     ]
+  },
+  {
+    "id": "venue_010",
+    "nama": "Elang Futsal Arena",
+    "slug": "elang-futsal-arena",
+    "deskripsi": "Arena futsal indoor berstandar turnamen dengan 3 lapangan sintetis. Pencahayaan terang, tribun penonton, dan ruang ganti modern. Cocok untuk sparing rutin, turnamen komunitas, atau gathering perusahaan. Terletak strategis di pusat kota dengan akses mudah dari tol.",
+    "alamat": "Jl. Elang Raya No.15",
+    "kota": "Tangerang",
+    "provinsi": "Banten",
+    "koordinat": { "lat": -6.1783, "lng": 106.6318 },
+    "rating": 4.4,
+    "total_review": 92,
+    "harga_mulai": 80000,
+    "biaya_layanan": 5000,
+    "status": "tersedia",
+    "foto": [
+      "/images/venues/elang-futsal-1.jpg",
+      "/images/venues/elang-futsal-2.jpg",
+      "/images/venues/elang-futsal-3.jpg"
+    ],
+    "jenis_olahraga": ["football"],
+    "fasilitas": [
+      "3 lapangan sintetis indoor",
+      "Penerangan LED standar turnamen",
+      "Tribun penonton kapasitas 100 orang",
+      "Ruang ganti & shower air hangat",
+      "Papan skor digital",
+      "Kantin & area makan",
+      "Tempat parkir mobil & motor",
+      "Wi-Fi gratis"
+    ],
+    "aturan": [
+      "Wajib menggunakan sepatu futsal non-marking.",
+      "Tidak merokok di dalam area venue.",
+      "Booking minimal 1 jam.",
+      "Dilarang membawa minuman beralkohol.",
+      "Jaga ketertiban dan kebersihan area."
+    ],
+    "whatsapp_admin": "6281234567900",
+    "is_active": true,
+    "created_at": "2026-03-15T00:00:00Z",
+    "jam_operasional": {
+      "buka": "08:00",
+      "tutup": "23:00",
+      "slot_durasi_menit": 60,
+      "catatan": "Slot terakhir mulai pukul 22:00."
+    },
+    "olahraga": [
+      {
+        "slug": "football",
+        "nama": "Futsal",
+        "ikon": "⚽",
+        "harga_per_jam": 80000,
+        "courts": [
+          { "id": "ef1", "nama": "Lapangan 1" },
+          { "id": "ef2", "nama": "Lapangan 2" },
+          { "id": "ef3", "nama": "Lapangan 3" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "venue_011",
+    "nama": "Coral Badminton House",
+    "slug": "coral-badminton-house",
+    "deskripsi": "Tempat badminton premium dengan 6 lapangan indoor berstandar internasional. Lantai kayu maple, pencahayaan optimal tanpa silau, dan sistem ventilasi modern. Dilengkapi lounge nyaman, pro shop, dan area pemanasan. Cocok untuk atlet profesional maupun pemain rekreasi.",
+    "alamat": "Jl. Karang Satria No.88",
+    "kota": "Bekasi",
+    "provinsi": "Jawa Barat",
+    "koordinat": { "lat": -6.2557, "lng": 107.0114 },
+    "rating": 4.7,
+    "total_review": 156,
+    "harga_mulai": 55000,
+    "biaya_layanan": 5000,
+    "status": "tersedia",
+    "foto": [
+      "/images/venues/coral-badminton-1.jpg",
+      "/images/venues/coral-badminton-2.jpg",
+      "/images/venues/coral-badminton-3.jpg",
+      "/images/venues/coral-badminton-4.jpg"
+    ],
+    "jenis_olahraga": ["badminton"],
+    "fasilitas": [
+      "6 lapangan lantai kayu maple",
+      "Pencahayaan LED anti-silau",
+      "Lounge & area tunggu premium",
+      "Ruang ganti & shower",
+      "Pro shop (raket, senar, sepatu)",
+      "Area pemanasan & peregangan",
+      "Kantin sehat",
+      "Parkir luas",
+      "Wi-Fi kecepatan tinggi"
+    ],
+    "aturan": [
+      "Sepatu badminton non-marking wajib.",
+      "Tidak merokok di seluruh area.",
+      "Booking bisa untuk 1-3 jam per sesi.",
+      "Jaga kebersihan lapangan.",
+      "Hormati pemain lain, jaga volume suara."
+    ],
+    "whatsapp_admin": "6281234567901",
+    "is_active": true,
+    "created_at": "2026-04-01T00:00:00Z",
+    "jam_operasional": {
+      "buka": "06:00",
+      "tutup": "22:00",
+      "slot_durasi_menit": 60,
+      "catatan": "Jam pagi (06:00-08:00) ada diskon 20%."
+    },
+    "olahraga": [
+      {
+        "slug": "badminton",
+        "nama": "Badminton",
+        "ikon": "🏸",
+        "harga_per_jam": 55000,
+        "courts": [
+          { "id": "cb1", "nama": "Lapangan 1" },
+          { "id": "cb2", "nama": "Lapangan 2" },
+          { "id": "cb3", "nama": "Lapangan 3" },
+          { "id": "cb4", "nama": "Lapangan 4" },
+          { "id": "cb5", "nama": "Lapangan 5" },
+          { "id": "cb6", "nama": "Lapangan 6" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "venue_012",
+    "nama": "Phoenix Basketball Court",
+    "slug": "phoenix-basketball-court",
+    "deskripsi": "Lapangan basket outdoor modern dengan permukaan beton premium dan 2 ring standar FIBA. Terletak di kawasan olahraga terpadu dengan pemandangan kota. Dilengkapi lampu untuk main malam dan tribun penonton. Populer di kalangan komunitas streetball dan liga lokal.",
+    "alamat": "Jl. Pemuda No.45, Komplek Olahraga",
+    "kota": "Depok",
+    "provinsi": "Jawa Barat",
+    "koordinat": { "lat": -6.4025, "lng": 106.7942 },
+    "rating": 4.3,
+    "total_review": 67,
+    "harga_mulai": 40000,
+    "biaya_layanan": 3000,
+    "status": "tersedia",
+    "foto": [
+      "/images/venues/phoenix-basketball-1.jpg",
+      "/images/venues/phoenix-basketball-2.jpg"
+    ],
+    "jenis_olahraga": ["basket"],
+    "fasilitas": [
+      "Lapangan full court outdoor",
+      "Ring standar FIBA",
+      "Penerangan malam",
+      "Tribun penonton",
+      "Warung minuman",
+      "Toilet umum",
+      "Parkir motor & mobil"
+    ],
+    "aturan": [
+      "Sepatu basket wajib.",
+      "Dilarang merokok di area lapangan.",
+      "Tidak bermain saat hujan deras.",
+      "Booking minimal 1 jam.",
+      "Jaga fasilitas bersama."
+    ],
+    "whatsapp_admin": "6281234567902",
+    "is_active": true,
+    "created_at": "2026-04-10T00:00:00Z",
+    "jam_operasional": {
+      "buka": "07:00",
+      "tutup": "22:00",
+      "slot_durasi_menit": 60,
+      "catatan": "Saat hujan venue tidak dapat digunakan."
+    },
+    "olahraga": [
+      {
+        "slug": "basket",
+        "nama": "Basket",
+        "ikon": "🏀",
+        "harga_per_jam": 40000,
+        "courts": [{ "id": "pb1", "nama": "Full Court" }]
+      }
+    ]
+  },
+  {
+    "id": "venue_013",
+    "nama": "Harmony Tennis & Badminton Club",
+    "slug": "harmony-tennis-badminton-club",
+    "deskripsi": "Klub olahraga premium yang menyediakan fasilitas tenis dan badminton dalam satu lokasi. Lapangan tenis hard court berstandar internasional dan lapangan badminton dengan lantai kayu. Suasana eksklusif dengan pelayanan profesional, tersedia pelatih pribadi, dan area relaksasi.",
+    "alamat": "Jl. Harmoni Raya No.120",
+    "kota": "Jakarta Selatan",
+    "provinsi": "DKI Jakarta",
+    "koordinat": { "lat": -6.2893, "lng": 106.7895 },
+    "rating": 4.8,
+    "total_review": 203,
+    "harga_mulai": 75000,
+    "biaya_layanan": 10000,
+    "status": "terbatas",
+    "foto": [
+      "/images/venues/harmony-club-1.jpg",
+      "/images/venues/harmony-club-2.jpg",
+      "/images/venues/harmony-club-3.jpg",
+      "/images/venues/harmony-club-4.jpg"
+    ],
+    "jenis_olahraga": ["tennis", "badminton"],
+    "fasilitas": [
+      "4 lapangan hard court tenis",
+      "2 lapangan badminton kayu maple",
+      "Penerangan standar internasional",
+      "Ruang ganti VIP & shower",
+      "Pro shop lengkap",
+      "Kafe & restaurant",
+      "Area relaksasi & sauna",
+      "Ruang meeting",
+      "Parkir valet",
+      "Wi-Fi premium"
+    ],
+    "aturan": [
+      "Sepatu non-marking sesuai jenis lapangan wajib.",
+      "Dilarang merokok di seluruh area.",
+      "Booking minimal 1 jam.",
+      "Pembatalan maksimal 6 jam sebelum sesi.",
+      "Jaga ketenangan dan kebersihan fasilitas."
+    ],
+    "whatsapp_admin": "6281234567903",
+    "is_active": true,
+    "created_at": "2026-04-20T00:00:00Z",
+    "jam_operasional": {
+      "buka": "06:00",
+      "tutup": "23:00",
+      "slot_durasi_menit": 60,
+      "catatan": "Weekend & libur nasional dikenakan surcharge 15%."
+    },
+    "olahraga": [
+      {
+        "slug": "tennis",
+        "nama": "Tenis",
+        "ikon": "🎾",
+        "harga_per_jam": 100000,
+        "courts": [
+          { "id": "ht1", "nama": "Hard Court 1" },
+          { "id": "ht2", "nama": "Hard Court 2" },
+          { "id": "ht3", "nama": "Hard Court 3" },
+          { "id": "ht4", "nama": "Hard Court 4" }
+        ]
+      },
+      {
+        "slug": "badminton",
+        "nama": "Badminton",
+        "ikon": "🏸",
+        "harga_per_jam": 75000,
+        "courts": [
+          { "id": "hb1", "nama": "Lapangan 1" },
+          { "id": "hb2", "nama": "Lapangan 2" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "venue_014",
+    "nama": "Jakarta Volley Dome",
+    "slug": "jakarta-volley-dome",
+    "deskripsi": "Gedung bola voli indoor terbesar di Jakarta dengan 4 lapangan standar nasional dan 1 lapangan latihan. Lantai taraflex profesional, pencahayaan turnamen, dan kapasitas tribun hingga 500 penonton. Sering digunakan untuk kejuaraan nasional dan pelatihan tim provinsi.",
+    "alamat": "Jl. Pemuda No.10, Komplek GBK",
+    "kota": "Jakarta Pusat",
+    "provinsi": "DKI Jakarta",
+    "koordinat": { "lat": -6.22, "lng": 106.8 },
+    "rating": 4.6,
+    "total_review": 178,
+    "harga_mulai": 90000,
+    "biaya_layanan": 8000,
+    "status": "tersedia",
+    "foto": [
+      "/images/venues/jakarta-volley-dome-1.jpg",
+      "/images/venues/jakarta-volley-dome-2.jpg",
+      "/images/venues/jakarta-volley-dome-3.jpg"
+    ],
+    "jenis_olahraga": ["volley"],
+    "fasilitas": [
+      "4 lapangan utama taraflex",
+      "1 lapangan latihan",
+      "Penerangan standar turnamen",
+      "Tribun 500 penonton",
+      "Ruang ganti atlet & shower",
+      "Papan skor elektronik",
+      "Ruang wasit & official",
+      "Kantin & catering area",
+      "Parkir bus & mobil",
+      "Ruang medis"
+    ],
+    "aturan": [
+      "Sepatu voli karet wajib.",
+      "Dilarang merokok di seluruh komplek.",
+      "Booking minimal 2 jam.",
+      "Pesanan khusus untuk turnamen minimal 2 minggu sebelumnya.",
+      "Jaga fasilitas dan kebersihan dengan baik."
+    ],
+    "whatsapp_admin": "6281234567904",
+    "is_active": true,
+    "created_at": "2026-05-01T00:00:00Z",
+    "jam_operasional": {
+      "buka": "07:00",
+      "tutup": "22:00",
+      "slot_durasi_menit": 120,
+      "catatan": "Minimal booking 2 jam (1 slot = 2 jam)."
+    },
+    "olahraga": [
+      {
+        "slug": "volley",
+        "nama": "Bola Voli",
+        "ikon": "🏐",
+        "harga_per_jam": 90000,
+        "courts": [
+          { "id": "jv1", "nama": "Lapangan Utama A" },
+          { "id": "jv2", "nama": "Lapangan Utama B" },
+          { "id": "jv3", "nama": "Lapangan Utama C" },
+          { "id": "jv4", "nama": "Lapangan Utama D" },
+          { "id": "jv5", "nama": "Lapangan Latihan" }
+        ]
+      }
+    ]
   }
 ]

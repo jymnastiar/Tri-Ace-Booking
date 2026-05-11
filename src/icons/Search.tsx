@@ -1,19 +1,20 @@
 import * as React from "react";
 import type { SVGProps } from "react";
 
-const Eye = (props: SVGProps<SVGSVGElement>) => (
+const Search = (props: SVGProps<SVGSVGElement>) => (
   <svg
+    width="18"
+    height="18"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round"
     {...props}
   >
-    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-    <circle cx="12" cy="12" r="3" />
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.35-4.35" />
   </svg>
 );
 
-export default Eye;
+export default Search;

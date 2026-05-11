@@ -17,6 +17,16 @@
   --color-badge-bg: #e0f2fe;
   --color-badge-txt: #0284c7;
 
+  --color-input-bg: #f1f5f9;
+  --color-input-text: #0f172a;
+  --color-input-placeholder: #94a3b8;
+  --color-input-border: transparent;
+  --color-input-focus-border: #0ea5e9;
+
+  --color-text-title: #0f172b;
+  --color-text-body: #45556c;
+  --color-text-caption: #90a1b9;
+
   /* Border radius */
   --radius-btn: 6px;
 
@@ -535,6 +545,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .alert-modal-btn--info:hover {
   background: #0284c7;
   box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
+}
+
+.btn-press-effect {
+  transform: scale(1);
+  transition:
+    transform 0.12s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
+}
+
+.btn-press-effect:active,
+.btn-pressed {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.25);
 }
 
 .notfound-number {

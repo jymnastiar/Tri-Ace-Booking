@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { SVGProps } from "react";
 
-const Eye = (props: SVGProps<SVGSVGElement>) => (
+const AlertCircle = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
@@ -11,9 +11,10 @@ const Eye = (props: SVGProps<SVGSVGElement>) => (
     strokeLinejoin="round"
     {...props}
   >
-    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-    <circle cx="12" cy="12" r="3" />
+    <circle cx="12" cy="12" r="10" />
+    <line x1="12" y1="8" x2="12" y2="12" />
+    <line x1="12" y1="16" x2="12.01" y2="16" />
   </svg>
 );
 
-export default Eye;
+export default AlertCircle;

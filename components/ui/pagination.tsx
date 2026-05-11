@@ -10,9 +10,10 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-10 animate-fade-up" style={{ animationDelay: ".5s" }}>
+    <div className="flex items-center justify-center gap-2 mt-10 animate-fade-up delay-500">
       {/* Previous */}
       <button
+        aria-label="previous"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className="cursor-pointer page-btn w-9 h-9 flex items-center justify-center rounded-lg border border-border bg-white text-body hover:bg-surface hover:border-primary/30 transition-all text-sm disabled:opacity-50 disabled:cursor-not-allowed"
@@ -37,6 +38,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
 
       {/* Next */}
       <button
+        aria-label="next"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className="cursor-pointer page-btn w-9 h-9 flex items-center justify-center rounded-lg border border-border bg-white text-body hover:bg-surface hover:border-primary/30 transition-all text-sm disabled:opacity-50 disabled:cursor-not-allowed"

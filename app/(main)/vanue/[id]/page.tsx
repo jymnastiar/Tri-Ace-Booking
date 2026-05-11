@@ -1,19 +1,19 @@
 import vanueData from '@/data/vanue.json';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import Badge from '@/components/ui/badge';
-import Button from '@/components/ui/button';
-import Gallery from '@/components/ui/gallery';
-import MobileCTA from '@/components/ui/mobileCTA';
-import MapPlaceholder from '@/components/ui/mapPlaceholder';
-import { facEmoji } from '@/lib/facEmoji';
 import { createServerSupabase } from '@/lib/supabase/server';
-import VenueBookingSection from '@/components/layouts/booking/venuebook';
 
-export default async function VanueDetailPage({ params }: { params: { id: string } }) {
-  const { id } = await params;
+import MobileCTA from '@/components/layouts/venue/mobileCTA';
+import Gallery from '@/components/layouts/venue/gallery';
+import VenueBookingSection from '@/components/layouts/booking/venuebook';
+import VenueBreadcrumb from '@/components/layouts/venue/VenueBreadcrumb';
+import VenueHeader from '@/components/layouts/venue/VenueHeader';
+import VenueDescription from '@/components/layouts/venue/VenueDescription';
+import VenueRules from '@/components/layouts/venue/VenueRules';
+import VenueSidebar from '@/components/layouts/venue/VenueSidebar';
+
+async function getVenueData(id: string) {
   const vanue = vanueData.find((item) => id === item.id);
-  if (!vanue) return notFound();
+  if (!vanue) return null;
 
   const supabase = createServerSupabase();
   const today = new Date().toISOString().split("T")[0];
@@ -23,113 +23,48 @@ export default async function VanueDetailPage({ params }: { params: { id: string
     .eq('venue_id', vanue.id)
     .eq('tanggal', today)
     .in('status', ['pending', 'confirmed']);
+    
   const initialBookedSlots = bookedData?.map(b => [b.ri, b.ci] as [number, number]) ?? [];
+  
+  return {
+    vanue,
+    initialBookedSlots
+  };
+}
+
+export default async function VanueDetailPage({ params }: { params: { id: string } }) {
+  const { id } = await params;
+  const data = await getVenueData(id);
+  
+  if (!data) return notFound();
+  
+  const { vanue, initialBookedSlots } = data;
 
   return (
     <section>
-      {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-1 animate-fade-in">
-        <nav className="flex items-center gap-1.5 text-xs text-muted" aria-label="Breadcrumb">
-          <Link href="/" className="breadcrumb-link hover:text-primary flex items-center gap-1">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>
-            Beranda
-          </Link>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-          <Link href="/" className="breadcrumb-link hover:text-primary">
-            Sewa Lapangan
-          </Link>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-          <span className="text-title font-medium">{vanue.nama}</span>
-        </nav>
-      </div>
+      <VenueBreadcrumb name={vanue.nama} />
 
-      {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Column */}
           <div className="flex-1 min-w-0">
-            {/* Gallery */}
             <Gallery images={vanue.foto} />
 
-            {/* Title & meta */}
-            <div className="animate-fade-up stagger-2">
-              <h1 className="font-extrabold text-title text-2xl sm:text-3xl mb-2">{vanue.nama}</h1>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3">
-                <div className="flex items-center gap-1">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <span className="text-sm font-bold text-title">{vanue.rating}</span>
-                </div>
-                <span className="text-muted text-sm">•</span>
-                <span className="text-sm text-body flex items-center gap-1">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2">
-                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <circle cx="12" cy="11" r="3" />
-                  </svg>
-                  {vanue.alamat}
-                </span>
-              </div>
-
-              {/* Sport badges - reuse Badge component */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {vanue.jenis_olahraga.map((sport) => (
-                  <Badge key={sport} variant="category" icon={`/icons/${sport}.svg`}>
-                    {sport}
-                  </Badge>
-                ))}
-              </div>
-
-              {/* WhatsApp button */}
-              <a
-                href={`https://wa.me/${vanue.whatsapp_admin}?text=Halo, saya tertarik dengan ${vanue.nama}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="wa-btn inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-2.5 rounded-btn shadow-md shadow-green-400/30 transition-colors"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                </svg>
-                Kontak Admin Venue
-              </a>
-            </div>
+            <VenueHeader 
+              name={vanue.nama}
+              rating={vanue.rating}
+              address={vanue.alamat}
+              sports={vanue.jenis_olahraga}
+              whatsapp={vanue.whatsapp_admin}
+            />
 
             <hr className="section-divider" />
-
-            {/* Deskripsi */}
-            <div className="animate-fade-up stagger-3">
-              <h2 className="font-bold text-title text-xl mb-3">Deskripsi</h2>
-              <div className="text-body text-sm leading-relaxed space-y-2.5">
-                <p>{vanue.deskripsi}</p>
-              </div>
-            </div>
+            <VenueDescription description={vanue.deskripsi} />
 
             <hr className="section-divider" />
-
-            {/* Aturan */}
-            <div className="animate-fade-up stagger-4">
-              <h2 className="font-bold text-title text-xl mb-3">Aturan Venue</h2>
-              <ol className="space-y-2">
-                {vanue.aturan.map((rule, idx) => (
-                  <li key={idx} className="flex gap-2.5 text-sm text-body">
-                    <span className="w-5 h-5 rounded-full bg-primary-light text-primary font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                      {idx + 1}
-                    </span>
-                    {rule}
-                  </li>
-                ))}
-              </ol>
-            </div>
+            <VenueRules rules={vanue.aturan} />
 
             <hr className="section-divider" />
-
-            {/* Ketersediaan */}
             <VenueBookingSection
               venueId={vanue.id}
               olahraga={vanue.olahraga}
@@ -139,55 +74,15 @@ export default async function VanueDetailPage({ params }: { params: { id: string
           </div>
 
           {/* Right Column (sticky booking card) */}
-          <div className="lg:w-72 xl:w-80 shrink-0">
-            <div className="booking-card">
-              {/* Booking card */}
-              <div className="bg-white rounded-2xl border border-border shadow-lg p-5 mb-4 animate-fade-up stagger-1">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-primary-light flex items-center justify-center">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth="2" strokeLinecap="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" />
-                        <path d="M16 2v4M8 2v4M3 10h18" />
-                      </svg>
-                    </div>
-                    <span className="text-xs text-muted font-medium">Mulai dari</span>
-                  </div>
-                </div>
-                <p className="price-display font-extrabold text-3xl text-title transition-colors mb-1">
-                  Rp {vanue.harga_mulai.toLocaleString('id-ID')}
-                </p>
-                <p className="text-xs text-muted mb-4 leading-relaxed">
-                  {vanue.deskripsi.substring(0, 100)}...
-                </p>
-                <Button variant="primary" size="md" href="#ketersediaan">
-                  Booking Lapangan
-                </Button>
-              </div>
-
-              {/* Fasilitas */}
-              <div className="bg-white rounded-2xl border border-border shadow-sm p-5 mb-4 animate-fade-up stagger-2">
-                <h3 className="font-bold text-title text-base mb-3">Fasilitas Venue</h3>
-                <ul className="space-y-1">
-                  {vanue.fasilitas.map((fac, i) => (
-                    <li key={i} className="fac-item flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-sm text-body">
-                      <span className="w-7 h-7 rounded-lg bg-primary-light flex items-center justify-center shrink-0 text-base">
-                        {facEmoji(fac)}
-                      </span>
-                      {fac}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Map placeholder */}
-              <MapPlaceholder alamat={vanue.alamat} />
-            </div>
-          </div>
+          <VenueSidebar 
+            price={vanue.harga_mulai}
+            description={vanue.deskripsi}
+            facilities={vanue.fasilitas}
+            address={vanue.alamat}
+          />
         </div>
       </main>
 
-      {/* Mobile sticky CTA */}
       <MobileCTA harga={vanue.harga_mulai} />
     </section>
   );

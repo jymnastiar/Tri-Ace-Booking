@@ -1,38 +1,13 @@
 import Badge from './badge';
 import type { VenueItem } from '@/types/venueItem';
 import Link from 'next/link';
+import SkeletonCard from './skeletonCard';
+import { Star } from '@/src/icons';
 
 interface VenueListProps {
   items: VenueItem[];
   isLoading?: boolean;
   skeletonCount?: number;
-}
-
-function SkeletonCard() {
-  return (
-    <div className="venue-card bg-white rounded-2xl border border-border shadow-sm overflow-hidden">
-      <div className="relative overflow-hidden h-44 bg-gray-200 animate-pulse">
-        <div className="absolute top-3 left-3 flex gap-1.5">
-          <span className="h-6 w-20 rounded-full bg-gray-300 animate-pulse inline-block" />
-          <span className="h-6 w-16 rounded-full bg-gray-300 animate-pulse inline-block" />
-        </div>
-      </div>
-
-      <div className="p-4 flex flex-col gap-2">
-        <div className="h-4 w-3/4 rounded-md bg-gray-200 animate-pulse mb-1" />
-
-        <div className="flex items-center gap-2">
-          <div className="h-3 w-8 rounded bg-gray-200 animate-pulse" />
-          <div className="h-3 w-32 rounded bg-gray-200 animate-pulse" />
-        </div>
-
-        <div className="flex items-center justify-between mt-3">
-          <div className="h-4 w-28 rounded bg-gray-200 animate-pulse" />
-          <div className="h-6 w-16 rounded-full bg-gray-200 animate-pulse" />
-        </div>
-      </div>
-    </div>
-  );
 }
 
 export function VenueCardSkeleton({ count = 9 }: { count?: number }) {
@@ -69,7 +44,7 @@ export default function VenueCard({ items, isLoading = false, skeletonCount = 9 
             <div className="p-4 flex flex-col gap-2">
               <h3 className="font-bold text-title text-sm mb-1">{item.nama}</h3>
               <div className="flex items-center gap-1 mb-1">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+                <Star color='#F59E0B'/>
                 <span className="text-xs font-semibold text-title">{item.rating}</span>
                 <span className="text-xs text-muted truncate">• {item.alamat}</span>
               </div>
