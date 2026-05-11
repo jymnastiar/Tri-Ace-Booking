@@ -3,6 +3,7 @@ import { createServerSupabase } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import vanueData from '@/data/vanue.json';
 import ConfirmDesign from '@/components/layouts/booking/confirmDesign';
+import { Suspense } from 'react';
 
 export default async function ConfirmPage({
   params,
@@ -29,9 +30,11 @@ export default async function ConfirmPage({
   const total = totalSewa + biayaLayanan;
 
   return (
-    <ConfirmDesign
-      bookingId={bookingId}
-      total={total}
-    />
+    <Suspense>
+      <ConfirmDesign
+        bookingId={bookingId}
+        total={total}
+      />
+    </Suspense>
   );
 }
