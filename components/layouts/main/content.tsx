@@ -1,4 +1,3 @@
-// components/main/MainContent.tsx
 "use client";
 
 import SearchBar from "@/components/ui/searchbar";

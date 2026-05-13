@@ -26,37 +26,10 @@ export default function SignUpPage() {
     loading,
     globalError,
     errors,
-    sukses,
     pressed,
     setPressed,
     handleRegister,
   } = useRegister();
-
-  if (sukses) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-white px-6">
-        <div className="w-full max-w-md text-center animate-fade-up">
-          <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6 text-4xl">
-            ✅
-          </div>
-          <h1 className="text-2xl font-extrabold text-text-body mb-3">Akun berhasil dibuat!</h1>
-          <p className="text-text-caption text-sm leading-relaxed mb-2">
-            Kami mengirim email konfirmasi ke:
-          </p>
-          <p className="font-bold text-primary mb-6">{email}</p>
-          <p className="text-text-caption text-sm mb-8">
-            Buka email tersebut dan klik link konfirmasi sebelum bisa masuk.
-          </p>
-          <Link
-            href="/login"
-            className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-input-focus-border text-white font-bold text-sm hover:bg-[#0284C7] transition-colors shadow-lg shadow-sky-200"
-          >
-            Pergi ke halaman Masuk
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <AuthLayout
@@ -150,8 +123,9 @@ export default function SignUpPage() {
           </Link>
         </div>
 
-        <AuthDivider text="atau masuk dengan" />
-        <AuthSocialButtons />
+        {/* Fitur masih dalam pengembangan */}
+        {/* <AuthDivider text="atau masuk dengan" />
+        <AuthSocialButtons /> */}
       </form>
     </AuthLayout>
   );

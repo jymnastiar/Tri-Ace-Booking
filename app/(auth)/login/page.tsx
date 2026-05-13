@@ -111,8 +111,9 @@ export default function SignInPage() {
           </Button>
         </div>
 
-        <AuthDivider text="atau masuk dengan" />
-        <AuthSocialButtons />
+        {/* Fitur masih dalam pengembangan */}
+        {/* <AuthDivider text="atau masuk dengan" />
+        <AuthSocialButtons /> */}
       </form>
     </AuthLayout>
   );

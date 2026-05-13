@@ -9,7 +9,7 @@ type BadgeProps<T extends ElementType = "div"> = {
   variant: BadgeVariant;
   dot?: boolean;
   icon?: string | React.ReactNode;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   variantStatus?: BadgeVariantStatus;
 } & ComponentPropsWithoutRef<T>;

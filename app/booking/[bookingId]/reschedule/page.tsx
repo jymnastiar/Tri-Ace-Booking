@@ -1,9 +1,13 @@
 "use client";
 
+import ComingSoon from "@/components/layouts/development/coming-soon";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function ReschedulePage() {
-  return (
+  const [development, setDevelopment] = useState(true)
+
+  return development ? <ComingSoon/> :
     <div className="min-h-screen bg-background flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-3xl">
 
@@ -90,6 +94,7 @@ export default function ReschedulePage() {
                   <label className="block text-xs font-semibold text-[#0F172A] mb-2">Pilih Tanggal</label>
                   <div className="relative">
                     <input
+                      aria-label="reschedule-date"
                       type="date"
                       className="w-full border border-[#E2E8F0] rounded-xl px-4 py-3 bg-white text-sm text-[#0F172A] focus:outline-none focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20 transition-all"/>
                   </div>
@@ -99,6 +104,7 @@ export default function ReschedulePage() {
                   <label className="block text-xs font-semibold text-[#0F172A] mb-2">Pilih Waktu</label>
                   <div className="relative">
                     <input
+                      aria-label="reschedule-time"
                       type="time"
                       className="w-full border border-[#E2E8F0] rounded-xl px-4 py-3 bg-white text-sm text-[#0F172A] focus:outline-none focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20 transition-all"
                     />
@@ -138,5 +144,4 @@ export default function ReschedulePage() {
         </div>
       </div>
     </div>
-  );
 }

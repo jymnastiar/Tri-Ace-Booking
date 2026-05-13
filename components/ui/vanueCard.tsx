@@ -3,6 +3,7 @@ import type { VenueItem } from '@/types/venueItem';
 import Link from 'next/link';
 import SkeletonCard from './skeletonCard';
 import { Star } from '@/src/icons';
+import VenueEmptyState from './venueEmpty';
 
 interface VenueListProps {
   items: VenueItem[];
@@ -25,7 +26,7 @@ export default function VenueCard({ items, isLoading = false, skeletonCount = 9 
     return <VenueCardSkeleton count={skeletonCount} />;
   }
 
-  if (!items || items.length === 0) return null;
+  if (!items || items.length === 0) return <VenueEmptyState/>;
 
   return (
     <div className="cards-grid grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">

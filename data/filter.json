@@ -1,18 +1,11 @@
 {
-  "sports": [
-    "Badminton",
-    "Basket",
-    "Soccer",
-    "Tennis",
-    "Volleyball",
-    "Bowling"
-  ],
+  "sports": ["Badminton", "Basket", "Football", "Tennis", "Volley", "Bowling"],
   "cities": [
     "Jakarta Pusat",
-    "Kota Jakarta Selatan",
-    "Kota Tangerang",
-    "Kota Bandung",
-    "Kota Surabaya",
-    "Kota Yogyakarta"
+    "Jakarta Selatan",
+    "Bandung",
+    "Tangerang",
+    "Bekasi",
+    "Depok"
   ]
 }

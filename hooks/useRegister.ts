@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { createClientSupabase } from "@/lib/supabase/client";
 import { registerSchema } from "@/lib/validations/auth";
 
 export function useRegister() {
+  const router = useRouter();
   const supabase = createClientSupabase();
 
   const [namaDepan, setNamaDepan] = useState("");
@@ -72,6 +74,10 @@ export function useRegister() {
 
     setSukses(true);
     setLoading(false);
+
+    // Langsung redirect ke home
+    router.push("/");
+    router.refresh();
   };
 
   return {

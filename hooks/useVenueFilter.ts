@@ -22,23 +22,28 @@ export function useVenueFilter() {
     });
   }, []);
 
-  const filteredData = allVenue.filter((v) => {
-    if (query.trim() && !v.nama.toLowerCase().includes(query.toLowerCase())) {
+  const filteredData = allVenue.filter((item) => {
+    if (
+      query.trim() &&
+      !item.nama.toLowerCase().includes(query.toLowerCase())
+    ) {
       return false;
     }
-    if (city && v.kota.toLowerCase() !== city.toLowerCase()) {
+    if (city && item.kota.toLowerCase() !== city.toLowerCase()) {
       return false;
     }
     if (
       sport &&
-      !v.jenis_olahraga.some((o) => o.toLowerCase() === sport.toLowerCase())
+      !item.jenis_olahraga.some(
+        (sports) => sports.toLowerCase() === sport.toLowerCase(),
+      )
     ) {
       return false;
     }
-    if (hargaMin && v.harga_mulai < parseInt(hargaMin)) {
+    if (hargaMin && item.harga_mulai < parseInt(hargaMin)) {
       return false;
     }
-    if (hargaMax && v.harga_mulai > parseInt(hargaMax)) {
+    if (hargaMax && item.harga_mulai > parseInt(hargaMax)) {
       return false;
     }
     return true;

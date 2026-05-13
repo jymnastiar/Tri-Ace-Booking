@@ -5,6 +5,7 @@ import { useAvailability } from "@/hooks/useAvailability";
 import Image from "next/image";
 import { useState } from "react";
 import AlertModal from "@/components/ui/alertModal";
+import { useRef } from 'react';
 
 const OLAHRAGA_ICON_MAP: Record<string, string> = {
   badminton: "badminton.svg",
@@ -51,6 +52,7 @@ export default function AvailabilityTable({
     isCheckingOut,
   } = useAvailability({ olahraga, jamOperasional, initialBookedSlots, onCheckout });
 
+  const dateRef = useRef<HTMLInputElement>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleOlahragaSelect = (idx: number) => {
@@ -68,9 +70,12 @@ export default function AvailabilityTable({
         <div className="flex-1">
           <label className="block text-xs font-semibold text-title mb-1.5">Tanggal</label>
           <input
+            placeholder="Pilih Tanggal"
             type="date"
             value={tanggal}
             onChange={(e) => onTanggalChange(e.target.value)}
+            ref={dateRef}
+            onClick={() => dateRef.current?.showPicker()}
             className="w-full py-2.5 bg-white border border-border rounded-xl text-sm text-title focus:outline-none focus:border-primary transition-colors shadow-sm custom-date-input"
           />
         </div>
@@ -123,7 +128,7 @@ export default function AvailabilityTable({
       </div>
 
       <div className="table-wrapper rounded-2xl border border-border shadow-sm overflow-hidden">
-        <table className="w-full min-w-[640px] border-collapse text-sm">
+        <table className="w-full min-w-160 border-collapse text-sm">
           <thead>
             <tr className="tbl-head text-white">
               <th className="py-3 px-4 text-left font-semibold text-xs w-24">Waktu</th>
@@ -148,7 +153,7 @@ export default function AvailabilityTable({
                   return (
                     <td key={ci} className="py-2.5 px-2 border-b border-border/60">
                       <div
-                        className={`slot-cell ${cellClass} rounded-xl px-2 py-2 text-center mx-auto max-w-[120px] ${
+                        className={`slot-cell ${cellClass} rounded-xl px-2 py-2 text-center mx-auto max-w-30 ${
                           booked
                             ? "border border-dashed border-border bg-surface"
                             : "border border-border/60 bg-white"
