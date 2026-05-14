@@ -13,6 +13,7 @@ export function useVenueRouter() {
     } else {
       params.delete("q");
     }
+    params.set("page", "1");
     router.replace(`?${params.toString()}`, { scroll: false });
   };
 

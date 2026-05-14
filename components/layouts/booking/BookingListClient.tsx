@@ -258,35 +258,33 @@ export default function BookingListClient({
 
   return (
     <>
-      <div className="mb-6 rounded-2xl px-5 py-4.5 bg-[linear-gradient(135deg,#0EA5E9_0%,#0284C7_100%)] animate-fade-up">
-        <div className="flex items-center gap-3">
-          <div className="flex-1 relative">
-            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted pointer-events-none">
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              >
-                <circle cx="11" cy="11" r="8" />
-                <path d="M21 21l-4.35-4.35" />
-              </svg>
-            </span>
-            <input
-              type="text"
-              placeholder="Cari lapangan atau jenis olahraga..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white text-sm text-title placeholder:text-muted border border-transparent focus:outline-none focus:ring-2 focus:ring-primary/20"
-            />
-          </div>
+      <div className="mb-6 rounded-2xl px-5 py-4.5 bg-[linear-gradient(135deg,#0EA5E9_0%,#0284C7_100%)] animate-fade-up stagger-3">
+        <div className="flex-1 relative">
+          <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted pointer-events-none">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+          </span>
+          <input
+            type="text"
+            placeholder="Cari lapangan atau jenis olahraga..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white text-sm text-title placeholder:text-muted border border-transparent focus:outline-none focus:ring-2 focus:ring-primary/20"
+          />
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl border border-border shadow-sm overflow-hidden animate-fade-up">
+      <div className="bg-white rounded-2xl border border-border shadow-sm overflow-hidden animate-fade-up stagger-4">
         {/* DESKTOP TABLE */}
         <div className="hidden md:block overflow-x-auto">
           <table className="w-full min-w-180 text-sm">
