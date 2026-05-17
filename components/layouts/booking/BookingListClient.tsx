@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import vanueData from "@/data/vanue.json";
 import Badge from "@/components/ui/badge";
 import Button from "@/components/ui/button";
-import SearchBar from "@/components/ui/searchbar";
 
 interface Booking {
   booking_group: string;
@@ -138,7 +136,6 @@ function DesktopRow({
 }
 
 function MobileCard({
-  groupId,
   items,
   venueName,
   olahragaName,
@@ -146,7 +143,6 @@ function MobileCard({
   status,
   isEven,
 }: {
-  groupId: string;
   items: Booking[];
   venueName: string;
   olahragaName: string;
@@ -204,20 +200,20 @@ function MobileCard({
       <div className="flex gap-2">
         {status === "confirmed" && (
           <>
-            <Button variant="detail" href={`/booking/${groupId}/detail`}>
+            <Button variant="detail" href={`/booking/${items[0].booking_group}/detail`}>
               Detail
             </Button>
-            <Button variant="reschedule" href={`/booking/${groupId}/reschedule`}>
+            <Button variant="reschedule" href={`/booking/${items[0].booking_group}/reschedule`}>
               Reschedule
             </Button>
           </>
         )}
         {status === "pending" && (
           <>
-            <Button variant="buy" href={`/checkout/${groupId}`}>
+            <Button variant="buy" href={`/checkout/${items[0].booking_group}`}>
               Bayar
             </Button>
-            <Button variant="cancel" href={`/booking/${groupId}/batalkan`}>
+            <Button variant="cancel" href={`/booking/${items[0].booking_group}/batalkan`}>
               Batalkan
             </Button>
           </>
@@ -241,7 +237,7 @@ export default function BookingListClient({
 
   const entries = Object.entries(grouped);
 
-  const filteredEntries = entries.filter(([groupId, items]) => {
+  const filteredEntries = entries.filter(([, items]) => {
     const venue = vanueData.find((v) => v.id === items[0].venue_id);
     const olahraga = venue?.olahraga.find(
       (o) => o.slug === items[0].olahraga_slug
@@ -325,7 +321,7 @@ export default function BookingListClient({
               ) : (
                 <tr>
                   <td colSpan={5} className="py-12 text-center text-muted">
-                    Tidak ada hasil ditemukan untuk "{search}"
+                    Tidak ada hasil ditemukan untuk &quot;{search}&quot;
                   </td>
                 </tr>
               )}
@@ -348,7 +344,6 @@ export default function BookingListClient({
               return (
                 <MobileCard
                   key={groupId}
-                  groupId={groupId}
                   items={items}
                   venueName={venue?.nama ?? "-"}
                   olahragaName={olahraga?.nama ?? items[0].olahraga_slug}
@@ -360,7 +355,7 @@ export default function BookingListClient({
             })
           ) : (
             <div className="py-12 text-center text-muted">
-              Tidak ada hasil ditemukan untuk "{search}"
+              Tidak ada hasil ditemukan untuk &quot;{search}&quot;
             </div>
           )}
         </div>

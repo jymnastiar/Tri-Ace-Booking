@@ -29,7 +29,6 @@ export default async function CheckoutPage({ params }: { params: Promise<{ booki
       bookings={bookings}
       venue={venue ? { nama: venue.nama, id: venue.id } : null}
       olahraga={olahraga ? { nama: olahraga.nama, slug: olahraga.slug, ikon: olahraga.ikon } : null}
-      hargaPerJam={hargaPerJam}
       totalSewa={totalSewa}
       biayaLayanan={biayaLayanan}
       total={total}

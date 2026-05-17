@@ -31,7 +31,6 @@ interface CheckoutUIProps {
   bookings: BookingData[];
   venue: VenueInfo | null;
   olahraga: OlahragaInfo | null;
-  hargaPerJam: number;
   totalSewa: number;
   biayaLayanan: number;
   total: number;
@@ -42,7 +41,6 @@ export default function CheckoutUI({
   bookings,
   venue,
   olahraga,
-  hargaPerJam,
   totalSewa,
   biayaLayanan,
   total,

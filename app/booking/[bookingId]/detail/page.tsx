@@ -1,6 +1,5 @@
 import { createServerSupabase } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import vanueData from '@/data/vanue.json';
 import Badge from '@/components/ui/badge';
 import TicketActions from '@/components/layouts/booking/TicketActions';

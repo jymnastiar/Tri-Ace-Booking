@@ -4,8 +4,6 @@ import Link from "next/link";
 import { Loader } from "@/src/icons";
 import AuthLayout from "@/components/layouts/auth/AuthLayout";
 import AuthFormHeader from "@/components/layouts/auth/AuthFormHeader";
-import AuthDivider from "@/components/layouts/auth/AuthDivider";
-import AuthSocialButtons from "@/components/layouts/auth/AuthSocialButtons";
 import GlobalError from "@/components/ui/auth/GlobalError";
 import FormField from "@/components/ui/auth/FormField";
 import PasswordInput from "@/components/ui/auth/PasswordInput";

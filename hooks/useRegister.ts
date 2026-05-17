@@ -37,7 +37,7 @@ export function useRegister() {
     });
 
     if (!result.success) {
-      const fieldErrors: any = {};
+      const fieldErrors: Record<string, string> = {};
       result.error.issues.forEach((issue) => {
         const field = issue.path[0] as string;
         if (field) fieldErrors[field] = issue.message;

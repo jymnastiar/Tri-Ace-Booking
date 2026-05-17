@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import Button from "@/components/ui/button";
 import Logo from "@/public/icons/logo";
 import { createAuthSupabase } from "@/lib/supabase/server";
 import LogoutButton from "@/components/layouts/admin/logoutbtn";
@@ -46,12 +45,6 @@ export default async function AdminDashboardPage() {
       icon: "📊",
     },
   ];
-
-  const handleLogout = async () => {
-    const supabase = await createAuthSupabase();
-    await supabase.auth.signOut();
-    redirect("/login");
-  };
 
   return (
     <div className="min-h-screen bg-surface">

@@ -1,197 +1,87 @@
 # Tri-Ace Booking 🏸
 
-Platform pemesanan lapangan olahraga berbasis web yang memungkinkan pengguna mencari, melihat ketersediaan, dan memesan lapangan olahraga secara online.
+**Tri-Ace Booking** adalah platform pemesanan lapangan olahraga berbasis web yang dirancang untuk memudahkan komunitas olahraga dalam mencari, mengecek ketersediaan, dan memesan lapangan secara instan.
 
----
-
-## 🚀 Tech Stack
-
-| Teknologi | Versi | Keterangan |
-|---|---|---|
-| [Next.js](https://nextjs.org) | 16.2.4 | App Router, Server Components |
-| [React](https://react.dev) | 19 | UI library |
-| [TypeScript](https://www.typescriptlang.org) | ^5 | Type safety |
-| [Tailwind CSS](https://tailwindcss.com) | ^4 | Styling utility-first |
-| [Supabase](https://supabase.com) | ^2 | Database & Auth (PostgreSQL) |
-| [Lucide React](https://lucide.dev) | ^1 | Icon library |
+Mulai dari Badminton, Basket, Futsal, hingga Tenis dan Bowling, Tri-Ace Booking menghubungkan pengguna dengan berbagai venue olahraga terbaik di Jakarta, Bandung, dan sekitarnya dengan sistem pembayaran yang aman dan tiket digital yang praktis.
 
 ---
 
 ## ✨ Fitur Utama
 
-### 🏠 Halaman Utama (Venue Discovery)
-- Grid venue dengan **skeleton loading** saat data sedang di-fetch
-- **Filter sidebar** berdasarkan jenis olahraga, harga, dan status ketersediaan
-- **Search bar** untuk mencari venue berdasarkan nama
-- **Pagination** untuk navigasi halaman venue
-- Badge status ketersediaan: Tersedia / Terbatas / Penuh
+### 🔍 Eksplorasi Venue yang Cerdas
+- **Pencarian & Filter Presisi**: Temukan lapangan berdasarkan jenis olahraga (Badminton, Basket, Voli, Futsal, Tenis, Bowling), rentang harga, kota, hingga status ketersediaan.
+- **Visual yang Informatif**: Dilengkapi dengan galeri foto venue, daftar fasilitas lengkap (Parkir, Wi-Fi, Shower, dll), serta aturan venue untuk kenyamanan bersama.
+- **Status Real-time**: Indikator status venue (Tersedia, Terbatas, atau Penuh) memudahkan Anda mengambil keputusan dengan cepat.
 
-### 🏟️ Detail Venue
-- Galeri foto venue
-- Tabel ketersediaan lapangan interaktif (pilih slot per jam & lapangan)
-- Informasi olahraga yang tersedia, harga per sesi, rating, dan alamat
-- Batasan maksimum slot yang bisa dipilih
-- Alert modal ketika slot penuh atau checkout tanpa memilih slot
+### 📅 Sistem Booking Interaktif
+- **Tabel Ketersediaan Visual**: Pilih slot waktu dan nomor lapangan secara langsung melalui grid interaktif yang intuitif.
+- **Validasi Cerdas**: Sistem mencegah pemilihan slot yang sudah dipesan orang lain dan memberikan peringatan jika melebihi batas pemesanan.
+- **Multi-slot Booking**: Pesan beberapa jam atau lapangan sekaligus dalam satu transaksi.
 
-### 📋 Riwayat Booking (`/booking`)
-- Tampilan tabel responsif (desktop) dan card (mobile)
-- Status booking: **Terkonfirmasi**, **Menunggu Pembayaran**, **Dibatalkan**, **Selesai**
-- Aksi per booking: Detail, Bayar, Reschedule, Batalkan
-- Empty state ketika belum ada booking
+### 💳 Pembayaran & Konfirmasi Otomatis
+- **Berbagai Metode Pembayaran**: Mendukung transfer bank (BCA, BNI, BRI) dan e-wallet populer (DANA, OVO, GoPay, QRIS).
+- **Countdown Pembayaran**: Fitur pengingat waktu pembayaran untuk menjaga keadilan alokasi slot lapangan.
+- **Konfirmasi Instan**: Status booking otomatis berubah menjadi 'Terkonfirmasi' setelah pembayaran divalidasi.
 
-### 🔖 Detail Booking (`/booking/[bookingId]/detail`)
-- Tiket digital dengan informasi lengkap venue, olahraga, tanggal, dan slot
-- QR Code placeholder untuk verifikasi petugas
-- Kode booking unik
-
-### 🔁 Reschedule (`/booking/[bookingId]/reschedule`)
-- Form pilih tanggal dan waktu baru
-- Informasi booking aktif saat ini
-- Info batas waktu reschedule (24 jam sebelum jadwal)
-
-### 💳 Checkout (`/checkout/[bookingId]`)
-- Ringkasan pesanan (venue, olahraga, tanggal, slot)
-- Rincian biaya (sewa lapangan + biaya layanan)
-- Pilih metode pembayaran: BCA, BRI, BNI, DANA, OVO, GoPay, QRIS
-
-### ✅ Konfirmasi Pembayaran (`/checkout/[bookingId]/confirm`)
-- Countdown timer batas waktu pembayaran
-- Nomor Virtual Account per metode pembayaran
-- Salin nomor rekening otomatis ke clipboard
-- QRIS scan untuk metode QRIS
-- Konfirmasi selesai yang mengupdate status booking ke `confirmed`
+### 🎫 Manajemen Pesanan & Tiket Digital
+- **Riwayat Booking Lengkap**: Pantau semua status pesanan Anda (Pembayaran, Terkonfirmasi, Selesai, atau Dibatalkan) dalam satu halaman.
+- **Tiket Digital & QR Code**: Dapatkan tiket digital lengkap dengan QR Code unik untuk kemudahan verifikasi saat tiba di lokasi (check-in).
+- **Reschedule Fleksibel**: Ajukan perubahan jadwal secara mandiri sesuai dengan kebijakan waktu yang berlaku di venue.
 
 ---
 
-## 📁 Struktur Proyek
+## 🚀 Teknologi yang Digunakan
 
-```
-tri-ace-booking/
-├── app/
-│   ├── (main)/                  # Route group halaman utama
-│   │   ├── page.tsx             # Halaman beranda (venue listing)
-│   │   └── vanue/[id]/          # Halaman detail venue
-│   ├── booking/
-│   │   ├── page.tsx             # Riwayat booking
-│   │   └── [bookingId]/
-│   │       ├── detail/          # Tiket digital
-│   │       └── reschedule/      # Form reschedule
-│   ├── checkout/
-│   │   └── [bookingId]/
-│   │       ├── page.tsx         # Halaman pembayaran
-│   │       └── confirm/         # Konfirmasi & instruksi bayar
-│   └── (auth)/                  # Route group autentikasi
-│
-├── components/
-│   ├── ui/                      # Komponen reusable
-│   │   ├── vanueCard.tsx        # Card venue + skeleton loading
-│   │   ├── availabilityTable.tsx
-│   │   ├── badge.tsx
-│   │   ├── button.tsx
-│   │   ├── pagination.tsx
-│   │   ├── searchbar.tsx
-│   │   ├── sidebarFilter.tsx
-│   │   ├── gallery.tsx
-│   │   ├── alertModal.tsx
-│   │   └── navlink.tsx
-│   └── layouts/                 # Komponen layout per section
-│       ├── main/
-│       ├── checkout/
-│       └── booking/
-│
-├── data/
-│   ├── vanue.json               # Data venue (lokal)
-│   ├── payment.json             # Daftar metode pembayaran
-│   └── filter.json              # Opsi filter sidebar
-│
-├── hooks/
-│   ├── useAvailability.ts       # Logika booking slot lapangan
-│   └── usePagination.ts         # Logika pagination
-│
-├── lib/
-│   ├── supabase/                # Client & server Supabase
-│   ├── availability.ts
-│   └── facEmoji.ts
-│
-└── types/
-    └── venueItem.ts             # TypeScript types
-```
+| Teknologi | Keterangan |
+|---|---|
+| **Next.js 16 (App Router)** | Framework React untuk performa maksimal dan SEO-friendly. |
+| **React 19** | Library UI terbaru untuk antarmuka yang responsif dan interaktif. |
+| **TypeScript** | Memastikan keamanan kode dan meminimalisir error saat pengembangan. |
+| **Tailwind CSS 4** | Styling modern dengan pendekatan utility-first untuk desain yang bersih dan responsif. |
+| **Supabase** | Backend-as-a-Service untuk manajemen Database PostgreSQL dan Autentikasi yang aman. |
+| **Zod** | Validasi skema data yang ketat untuk input form dan integrasi API. |
 
 ---
 
-## 🗄️ Database (Supabase)
+## ⚙️ Cara Menjalankan Proyek
 
-Tabel `bookings`:
-
-| Kolom | Tipe | Keterangan |
-|---|---|---|
-| `booking_group` | `text` | ID unik per sesi booking |
-| `venue_id` | `text` | Referensi ke venue di `vanue.json` |
-| `olahraga_slug` | `text` | Slug jenis olahraga |
-| `tanggal` | `text` | Tanggal booking (YYYY-MM-DD) |
-| `ri` | `int` | Indeks baris (jam) pada tabel ketersediaan |
-| `ci` | `int` | Indeks kolom (lapangan) pada tabel ketersediaan |
-| `status` | `text` | `pending` / `confirmed` / `cancelled` / `done` |
-| `created_at` | `timestamp` | Waktu pembuatan booking |
-
----
-
-## ⚙️ Setup & Menjalankan Proyek
-
-### 1. Clone & Install
+### 1. Persiapan
+Pastikan Anda sudah menginstal [Node.js](https://nodejs.org) dan [pnpm](https://pnpm.io).
 
 ```bash
+# Clone repository
 git clone <repo-url>
+
+# Masuk ke direktori
 cd tri-ace-booking
+
+# Instal dependensi
 pnpm install
 ```
 
-### 2. Konfigurasi Environment
-
-Buat file `.env.local` di root proyek:
-
+### 2. Konfigurasi
+Buat file `.env.local` dan masukkan kredensial Supabase Anda:
 ```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_SUPABASE_URL=your_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 ```
 
-### 3. Jalankan Development Server
-
+### 3. Jalankan Aplikasi
 ```bash
+# Mode pengembangan
 pnpm dev
-```
 
-Buka [http://localhost:3000](http://localhost:3000) di browser.
-
-### 4. Build Production
-
-```bash
+# Build untuk produksi
 pnpm build
 pnpm start
 ```
 
----
-
-## 📜 Scripts
-
-| Script | Keterangan |
-|---|---|
-| `pnpm dev` | Jalankan development server |
-| `pnpm build` | Build untuk production |
-| `pnpm start` | Jalankan production server |
-| `pnpm lint` | Cek kode dengan ESLint |
+Aplikasi akan berjalan di [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## 🔀 Alur Pemesanan
-
-```
-Halaman Utama → Detail Venue → Pilih Slot → Checkout → Konfirmasi Bayar → Tiket Digital
-```
-
-1. **Browse** venue di halaman utama, filter sesuai kebutuhan
-2. **Klik venue** untuk melihat detail dan tabel ketersediaan
-3. **Pilih slot** (lapangan + jam) yang diinginkan
-4. **Checkout** — pilih metode pembayaran
-5. **Bayar** sesuai instruksi (Virtual Account / QRIS)
-6. **Tiket digital** siap ditunjukkan ke petugas di lokasi
+## 🔀 Alur Pengguna (User Flow)
+1. **Cari**: Filter lapangan favorit di halaman utama.
+2. **Pilih**: Lihat detail venue dan tentukan slot jam/lapangan yang tersedia.
+3. **Bayar**: Lakukan pembayaran melalui metode pilihan Anda sebelum batas waktu habis.
+4. **Main**: Tunjukkan tiket digital di lokasi dan selamat berolahraga!

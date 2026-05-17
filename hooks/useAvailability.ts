@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import type { Olahraga, JamOperasional } from "@/types/availability";
 import { generateSlots } from "@/lib/availability";
 
@@ -18,10 +18,12 @@ export function useAvailability({
 
   const [bookedSlots, setBookedSlots] =
     useState<[number, number][]>(initialBookedSlots);
+  const [prevInitialBookedSlots, setPrevInitialBookedSlots] = useState(initialBookedSlots);
 
-  useEffect(() => {
+  if (initialBookedSlots !== prevInitialBookedSlots) {
+    setPrevInitialBookedSlots(initialBookedSlots);
     setBookedSlots(initialBookedSlots);
-  }, [initialBookedSlots]);
+  }
 
   const slots = useMemo(
     () =>
@@ -35,6 +37,12 @@ export function useAvailability({
   );
 
   const [selected, setSelected] = useState<[number, number][]>([]);
+  const [prevSelectedIdxState, setPrevSelectedIdxState] = useState(selectedIdx);
+
+  if (selectedIdx !== prevSelectedIdxState) {
+    setPrevSelectedIdxState(selectedIdx);
+    setSelected([]);
+  }
 
   /** State untuk popup "Maksimal 2 slot per lapangan" */
   const [slotLimitAlert, setSlotLimitAlert] = useState(false);
@@ -50,11 +58,11 @@ export function useAvailability({
 
   const isUnavailable = (ri: number, ci: number) => {
     if (!slots[ri]?.avail[ci]) return true;
-    return bookedSlots.some(([r, c]) => r === ri && c === ci);
+    return bookedSlots.some(([row, col]) => row === ri && col === ci);
   };
 
   const isSelectedTemp = (ri: number, ci: number) =>
-    selected.some(([r, c]) => r === ri && c === ci);
+    selected.some(([row, col]) => row === ri && col === ci);
 
   const toggleSlot = (ri: number, ci: number) => {
     if (isUnavailable(ri, ci)) return;
@@ -63,7 +71,7 @@ export function useAvailability({
       if (idx !== -1) {
         return prev.filter((_, i) => i !== idx);
       } else {
-        const countInColumn = prev.filter(([r, c]) => c === ci).length;
+        const countInColumn = prev.filter(([, c]) => c === ci).length;
         if (countInColumn >= 2) {
           setSlotLimitAlert(true);
           return prev;
@@ -92,10 +100,6 @@ export function useAvailability({
       setSimulationAlert(true);
     }
   };
-
-  useEffect(() => {
-    setSelected([]);
-  }, [selectedIdx]);
 
   return {
     selectedIdx,
