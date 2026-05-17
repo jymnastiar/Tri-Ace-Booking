@@ -12,3 +12,5 @@ export { default as Check } from "./Check";
 export { default as Loader } from "./Loader";
 export { default as Search } from "./Search";
 export { default as Filter } from "./Filter";
+export { default as BadmintonIcon } from "./BadmintonIcon";
+export { default as LeftArrowIcon } from "./LeftArrowIcon";

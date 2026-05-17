@@ -1,4 +1,3 @@
-// app/admin/page.tsx
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Button from "@/components/ui/button";
@@ -128,6 +127,10 @@ export default async function AdminDashboardPage() {
           </div>
         </div>
       </main>
+
+      <footer className="my-10 flex justify-center">
+        <span className="italic text-text-caption text-sm">------- Tampilan hanya sementara -------</span>
+      </footer>
     </div>
   );
 }

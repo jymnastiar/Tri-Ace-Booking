@@ -4,22 +4,9 @@ import Link from 'next/link';
 import vanueData from '@/data/vanue.json';
 import Badge from '@/components/ui/badge';
 import TicketActions from '@/components/layouts/booking/TicketActions';
+import type { Booking } from '@/types/booking';
 
-interface Booking {
-  booking_group: string;
-  venue_id: string;
-  olahraga_slug: string;
-  tanggal: string;
-  ri: number;
-  ci: number;
-  status: string;
-}
-
-export default async function BookingDetailPage({
-  params,
-}: {
-  params: Promise<{ bookingId: string }>;
-}) {
+export default async function BookingDetailPage({ params }: {params: Promise<{ bookingId: string }>;}) {
   const { bookingId } = await params;
 
   const supabase = createServerSupabase();
