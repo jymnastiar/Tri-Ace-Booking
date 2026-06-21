@@ -2,7 +2,6 @@ import { createClient } from "@supabase/supabase-js";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
-// Service Role client
 export function createServerSupabase() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -11,7 +10,6 @@ export function createServerSupabase() {
   );
 }
 
-// Auth-aware client
 export async function createAuthSupabase() {
   const cookieStore = await cookies();
 

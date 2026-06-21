@@ -18,7 +18,6 @@ export async function createBookingReturnId({
   tanggal,
   selectedSlots,
 }: CreateBookingParams): Promise<string> {
-  // Auth client hanya untuk ambil identitas user
   const authClient = await createAuthSupabase();
   const {
     data: { user },
@@ -28,7 +27,6 @@ export async function createBookingReturnId({
     redirect("/login");
   }
 
-  // Service-role client untuk operasi database (bypass RLS)
   const supabase = createServerSupabase();
 
   const bookingGroupId = crypto.randomUUID();

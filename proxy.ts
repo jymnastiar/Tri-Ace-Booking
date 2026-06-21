@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function proxy(request: NextRequest) {
   let response = NextResponse.next({ request });
 
-  // Buat Supabase client yang bisa baca & tulis cookies
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -26,20 +25,16 @@ export async function proxy(request: NextRequest) {
     },
   );
 
-  // Ambil data user yang sedang login
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Proteksi /admin — hanya user dengan role "admin" yang boleh masuk
   if (request.nextUrl.pathname.startsWith("/admin")) {
     if (!user) {
-      // Belum login → arahkan ke halaman login
       return NextResponse.redirect(new URL("/login", request.url));
     }
 
     if (user.user_metadata?.role !== "admin") {
-      // Sudah login tapi bukan admin → arahkan ke halaman utama
       return NextResponse.redirect(new URL("/", request.url));
     }
   }

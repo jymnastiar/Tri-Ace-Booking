@@ -62,9 +62,13 @@ export function useRegister() {
 
     if (error) {
       if (error.message.includes("sudah terdatar")) {
-        setGlobalError("Email ini sudah terdaftar. Silakan masuk atau gunakan email lain.");
+        setGlobalError(
+          "Email ini sudah terdaftar. Silakan masuk atau gunakan email lain.",
+        );
       } else if (error.message.includes("Password harus")) {
-        setGlobalError("Kata sandi terlalu lemah. Gunakan kombinasi huruf dan angka.");
+        setGlobalError(
+          "Kata sandi terlalu lemah. Gunakan kombinasi huruf dan angka.",
+        );
       } else {
         setGlobalError(error.message);
       }
@@ -75,7 +79,6 @@ export function useRegister() {
     setSukses(true);
     setLoading(false);
 
-    // Langsung redirect ke home
     router.push("/");
     router.refresh();
   };
